@@ -1,6 +1,7 @@
 'use client'; // Menandai komponen ini sebagai Client Component untuk Next.js App Router
 
 import React, { useState } from 'react';
+import Footer from '@/barizaloka-web/components/Footer';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -243,9 +244,7 @@ const HomePage: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-purple-800 text-white py-10 text-center">
-        <p>&copy; 2025 Barizaloka Group. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
