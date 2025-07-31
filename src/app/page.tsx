@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -54,7 +55,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
 // Portfolio Card Component
 const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, description, imageUrl }) => (
   <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
+    <Image src={imageUrl} alt={title} className="w-full h-48 object-cover" />
     <div className="p-6">
       <h3 className="text-2xl font-bold text-purple-700 mb-3">{title}</h3>
       <p className="text-gray-600">{description}</p>
@@ -65,8 +66,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, description, image
 // Testimonial Card Component
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, avatarUrl }) => (
   <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <img src={avatarUrl} alt={author} className="w-24 h-24 rounded-full mb-6 object-cover border-4 border-purple-300" />
-    <p className="text-lg italic text-gray-700 mb-6">"{quote}"</p>
+    <Image src={avatarUrl} alt={author} className="w-24 h-24 rounded-full mb-6 object-cover border-4 border-purple-300" />
+    <p className="text-lg italic text-gray-700 mb-6">{quote}</p>
     <p className="font-semibold text-purple-700">{author}</p>
     <p className="text-sm text-gray-500">{role}</p>
   </div>
@@ -94,7 +95,7 @@ const Footer: React.FC = () => {
 
 // Main Landing Page Component
 const HomePage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('home');
+  const [,setActiveSection] = useState<string>('home');
 
   // Function to handle navigation for sections within the same page
   const navigateTo = (section: string) => {
@@ -138,7 +139,7 @@ const HomePage: React.FC = () => {
           </div>
           <div className="lg:w-1/2 flex justify-center items-center relative">
             <div className="absolute inset-0 bg-purple-300 opacity-30 rounded-full blur-3xl animate-pulse-slow"></div>
-            <img
+            <Image
               src="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Website+Mockup" // Placeholder for the image
               alt="Website Mockup"
               className="relative z-10 w-full max-w-md lg:max-w-lg rounded-xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out"

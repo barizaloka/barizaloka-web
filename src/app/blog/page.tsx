@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Footer from '@/barizaloka-web/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -28,7 +29,7 @@ interface TagFilterProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => (
 	<div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-		<img src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover" />
+		<Image src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover" />
 		<div className="p-6">
 			<h3 className="text-2xl font-bold text-purple-700 mb-2">{post.title}</h3>
 			<p className="text-gray-600 mb-4 line-clamp-3">{post.description}</p>
