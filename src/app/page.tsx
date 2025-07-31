@@ -208,7 +208,7 @@ const HomePage: React.FC = () => {
         <section id="home" className="flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-120px)]">
           <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
             <h1 className="text-6xl font-extrabold text-purple-800 leading-tight mb-6 animate-fade-in-up">
-              Roketkan <br /> Idenu
+              Roketkan <br /> Idemu
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto lg:mx-0 animate-fade-in-up delay-200">
               Jasa pembuatan website dan aplikasi mobile guna meroketkan idemu menjadi dalam genggaman dengan cara yang sangat mudah dari tim profesional.
@@ -244,24 +244,9 @@ const HomePage: React.FC = () => {
               description="Menciptakan aplikasi Android dan iOS yang inovatif, dengan performa tinggi dan user experience yang intuitif."
             />
             <ServiceFeature
-              icon="📊"
-              title="Sistem Manajemen (CRM/ERP)"
-              description="Solusi sistem terintegrasi untuk mengelola operasional bisnis, meningkatkan efisiensi, dan pengambilan keputusan."
-            />
-            <ServiceFeature
               icon="🎨"
               title="Desain UI/UX Profesional"
               description="Mendesain antarmuka pengguna yang menarik dan pengalaman pengguna yang mulus untuk semua produk digital Anda."
-            />
-            <ServiceFeature
-              icon="☁️"
-              title="Layanan Cloud & Hosting"
-              description="Menyediakan solusi hosting yang aman dan skalabel, serta integrasi layanan cloud untuk performa optimal."
-            />
-            <ServiceFeature
-              icon="🔍"
-              title="Optimasi SEO & Pemasaran Digital"
-              description="Meningkatkan visibilitas online Anda melalui strategi SEO yang efektif dan kampanye pemasaran digital yang terarah."
             />
           </div>
         </section>
