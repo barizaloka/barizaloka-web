@@ -1,7 +1,6 @@
 'use client'; // Menandai komponen ini sebagai Client Component
 
 import React, { useState, useMemo } from 'react';
-import Footer from '@/barizaloka-web/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -218,9 +217,6 @@ const BlogPage: React.FC = () => {
 					<p className="text-center text-gray-600 text-xl py-10">Tidak ada artikel yang ditemukan.</p>
 				)}
 			</main>
-
-			{/* Footer */}
-			<Footer />
 		</div>
 	);
 };

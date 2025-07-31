@@ -329,9 +329,6 @@ const HomePage: React.FC = () => {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
