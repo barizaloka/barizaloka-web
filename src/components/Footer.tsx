@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -9,7 +10,11 @@ const Footer: React.FC = () => {
     <footer className="bg-gradient-to-r from-purple-700 to-purple-900 text-white py-10 text-center shadow-lg">
       <div className="container mx-auto px-4 animate-fade-in"> {/* Animasi fade-in */}
         <p className="mb-2 text-lg font-semibold flex items-center justify-center">
-          ✨ Barizaloka Group ✨
+          ✨
+          <Link href="/" className="hover:underline transition duration-300 ease-in-out transform hover:scale-105">
+            Barizaloka Group
+          </Link>
+          ✨
         </p>
         <p className="mb-2 flex items-center justify-center">
           📧 Email: <a href="mailto:barizaloka@gmail.com" className="hover:underline ml-2 transition duration-300 ease-in-out transform hover:scale-105">barizaloka@gmail.com</a>
