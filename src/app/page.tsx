@@ -1,13 +1,14 @@
 'use client'; // Menandai komponen ini sebagai Client Component untuk Next.js App Router
 
 import React, { useState } from 'react';
-import Footer from '@/barizaloka-web/components/Footer';
+import Link from 'next/link';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
 interface NavItemProps {
   title: string;
-  onClick: () => void;
+  onClick?: () => void; // onClick menjadi opsional karena beberapa NavItem akan menggunakan Link
+  href?: string; // Menambahkan prop href untuk navigasi Link
 }
 
 interface PortfolioCardProps {
@@ -23,7 +24,7 @@ interface TestimonialCardProps {
   avatarUrl: string;
 }
 
-interface ProductFeatureProps {
+interface ServiceFeatureProps {
   icon: string; // Bisa berupa SVG path atau nama icon (misal: "🚀")
   title: string;
   description: string;
@@ -32,14 +33,23 @@ interface ProductFeatureProps {
 // --- Komponen-komponen ---
 
 // Navigation Item Component
-const NavItem: React.FC<NavItemProps> = ({ title, onClick }) => (
-  <button
-    onClick={onClick}
-    className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
-  >
-    {title}
-  </button>
-);
+const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
+  if (href) {
+    return (
+      <Link href={href} className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
+        {title}
+      </Link>
+    );
+  }
+  return (
+    <button
+      onClick={onClick}
+      className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
+    >
+      {title}
+    </button>
+  );
+};
 
 // Portfolio Card Component
 const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, description, imageUrl }) => (
@@ -63,7 +73,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, 
 );
 
 // Product Feature Component
-const ProductFeature: React.FC<ProductFeatureProps> = ({ icon, title, description }) => (
+const ServiceFeature: React.FC<ServiceFeatureProps> = ({ icon, title, description }) => (
   <div className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
     <div className="text-5xl mb-4 text-purple-600">{icon}</div> {/* Menggunakan icon sebagai teks/emoji */}
     <h3 className="text-xl font-bold text-purple-700 mb-2">{title}</h3>
@@ -71,12 +81,22 @@ const ProductFeature: React.FC<ProductFeatureProps> = ({ icon, title, descriptio
   </div>
 );
 
+// Footer Component - Dipindahkan ke sini untuk keperluan pratinjau agar tidak ada error import
+// Di proyek Next.js Anda, ini harus tetap berada di src/components/Footer.tsx
+const Footer: React.FC = () => {
+  return (
+    <footer className="bg-purple-800 text-white py-10 text-center">
+      <p>&copy; 2025 Barizaloka Group. All rights reserved.</p>
+    </footer>
+  );
+};
+
 
 // Main Landing Page Component
 const HomePage: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
 
-  // Function to handle navigation
+  // Function to handle navigation for sections within the same page
   const navigateTo = (section: string) => {
     setActiveSection(section);
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
@@ -88,12 +108,11 @@ const HomePage: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-purple-700">Barizaloka Group</div>
         <div className="flex space-x-6">
-          <NavItem title="Home" onClick={() => navigateTo('home')} />
-          <NavItem title="Produk" onClick={() => navigateTo('products')} />
+          <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
           <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
           <NavItem title="Tentang Kami" onClick={() => navigateTo('about-us')} />
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
-          <NavItem title="Blog" onClick={() => navigateTo('blog')} />
+          <NavItem title="Blog" href="/blog" />
         </div>
         <button className="bg-purple-500 hover:bg-purple-600 text-white p-2 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -127,36 +146,36 @@ const HomePage: React.FC = () => {
           </div>
         </section>
 
-        {/* Products Section */}
-        <section id="products" className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
+        {/* services Section */}
+        <section id="services" className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
           <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Produk yang Kami Tawarkan</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-8">
-            <ProductFeature
+            <ServiceFeature
               icon="💻"
               title="Pengembangan Website Kustom"
               description="Membangun website yang unik dan responsif sesuai kebutuhan bisnis Anda, dari landing page hingga platform kompleks."
             />
-            <ProductFeature
+            <ServiceFeature
               icon="📱"
               title="Pengembangan Aplikasi Mobile"
               description="Menciptakan aplikasi Android dan iOS yang inovatif, dengan performa tinggi dan user experience yang intuitif."
             />
-            <ProductFeature
+            <ServiceFeature
               icon="📊"
               title="Sistem Manajemen (CRM/ERP)"
               description="Solusi sistem terintegrasi untuk mengelola operasional bisnis, meningkatkan efisiensi, dan pengambilan keputusan."
             />
-            <ProductFeature
+            <ServiceFeature
               icon="🎨"
               title="Desain UI/UX Profesional"
               description="Mendesain antarmuka pengguna yang menarik dan pengalaman pengguna yang mulus untuk semua produk digital Anda."
             />
-            <ProductFeature
+            <ServiceFeature
               icon="☁️"
               title="Layanan Cloud & Hosting"
               description="Menyediakan solusi hosting yang aman dan skalabel, serta integrasi layanan cloud untuk performa optimal."
             />
-            <ProductFeature
+            <ServiceFeature
               icon="🔍"
               title="Optimasi SEO & Pemasaran Digital"
               description="Meningkatkan visibilitas online Anda melalui strategi SEO yang efektif dan kampanye pemasaran digital yang terarah."
