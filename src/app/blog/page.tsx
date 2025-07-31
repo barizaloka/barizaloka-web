@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 interface BlogPost {
 	id: string;
-	imageUrl: string;
+	imageUrl?: string;
 	title: string;
 	description: string;
 	tags: string[];
@@ -29,7 +29,17 @@ interface TagFilterProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => (
 	<div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-		<Image src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover" />
+
+		{post.imageUrl && (
+			<Image
+				src={post.imageUrl}
+				alt={post.title}
+				width={400}
+				height={250}
+				className="w-full h-48 object-cover"
+				loading="lazy"
+			/>
+		)}
 		<div className="p-6">
 			<h3 className="text-2xl font-bold text-purple-700 mb-2">{post.title}</h3>
 			<p className="text-gray-600 mb-4 line-clamp-3">{post.description}</p>
@@ -71,42 +81,42 @@ const BlogPage: React.FC = () => {
 	const allBlogPosts: BlogPost[] = useMemo(() => [
 		{
 			id: 'artikel-1',
-			imageUrl: 'https://placehold.co/400x250/A78BFA/FFFFFF?text=Web+Dev',
+			// imageUrl: 'https://placehold.co/400x250/A78BFA/FFFFFF?text=Web+Dev',
 			title: 'Tren Pengembangan Web di 2025',
 			description: 'Menganalisis tren terbaru dalam pengembangan web, termasuk teknologi front-end dan back-end yang sedang naik daun.',
 			tags: ['Web Development', 'Frontend', 'Backend', 'Tren'],
 		},
 		{
 			id: 'artikel-2',
-			imageUrl: 'https://placehold.co/400x250/8B5CF6/FFFFFF?text=Mobile+App',
+			// imageUrl: 'https://placehold.co/400x250/8B5CF6/FFFFFF?text=Mobile+App',
 			title: 'Membangun Aplikasi Mobile Cross-Platform dengan React Native',
 			description: 'Panduan lengkap untuk memulai pengembangan aplikasi mobile lintas platform menggunakan React Native.',
 			tags: ['Mobile Development', 'React Native', 'Cross-Platform'],
 		},
 		{
 			id: 'artikel-3',
-			imageUrl: 'https://placehold.co/400x250/C084FC/FFFFFF?text=UI/UX',
+			// imageUrl: 'https://placehold.co/400x250/C084FC/FFFFFF?text=UI/UX',
 			title: 'Pentingnya Desain UI/UX dalam Produk Digital',
 			description: 'Mengapa desain antarmuka pengguna dan pengalaman pengguna sangat krusial untuk kesuksesan produk Anda.',
 			tags: ['UI/UX', 'Desain', 'User Experience'],
 		},
 		{
 			id: 'artikel-4',
-			imageUrl: 'https://placehold.co/400x250/DDD6FE/FFFFFF?text=SEO',
+			// imageUrl: 'https://placehold.co/400x250/DDD6FE/FFFFFF?text=SEO',
 			title: 'Strategi SEO untuk Meningkatkan Visibilitas Website',
 			description: 'Tips dan trik untuk mengoptimalkan website Anda agar mudah ditemukan di mesin pencari.',
 			tags: ['SEO', 'Pemasaran Digital', 'Website'],
 		},
 		{
 			id: 'artikel-5',
-			imageUrl: 'https://placehold.co/400x250/E9D5FF/FFFFFF?text=Cloud',
+			// imageUrl: 'https://placehold.co/400x250/E9D5FF/FFFFFF?text=Cloud',
 			title: 'Memahami Konsep Cloud Computing untuk Startup',
 			description: 'Pengenalan dasar tentang cloud computing dan bagaimana startup dapat memanfaatkannya.',
 			tags: ['Cloud Computing', 'Startup', 'Teknologi'],
 		},
 		{
 			id: 'artikel-6',
-			imageUrl: 'https://placehold.co/400x250/FBCFE8/FFFFFF?text=AI',
+			// imageUrl: 'https://placehold.co/400x250/FBCFE8/FFFFFF?text=AI',
 			title: 'Peran AI dalam Transformasi Digital Bisnis',
 			description: 'Bagaimana kecerdasan buatan mengubah cara bisnis beroperasi dan berinovasi.',
 			tags: ['AI', 'Transformasi Digital', 'Bisnis'],
@@ -172,30 +182,30 @@ const BlogPage: React.FC = () => {
 			<main className="container mx-auto px-4 py-28">
 
 				{/* Search and Filter Section */}
-				 <div className="bg-white rounded-xl shadow-lg p-8 mb-12 flex flex-col gap-6">
-          {/* Search Input */}
-          <div>
-            <label htmlFor="article-search" className="sr-only">Cari Artikel</label>
-            <input
-              type="text"
-              id="article-search"
-              placeholder="Cari artikel berdasarkan judul atau deskripsi..."
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-          </div>
+				<div className="bg-white rounded-xl shadow-lg p-8 mb-12 flex flex-col gap-6">
+					{/* Search Input */}
+					<div>
+						<label htmlFor="article-search" className="sr-only">Cari Artikel</label>
+						<input
+							type="text"
+							id="article-search"
+							placeholder="Cari artikel berdasarkan judul atau deskripsi..."
+							className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200"
+							value={searchQuery}
+							onChange={handleSearchChange}
+						/>
+					</div>
 
-          {/* Tag Filter */}
-          <div>
-            <h3 className="text-xl font-bold text-purple-700 mb-4">Filter Berdasarkan Tag:</h3>
-            <TagFilter
-              tags={availableTags}
-              selectedTags={selectedTags}
-              onTagToggle={handleTagToggle}
-            />
-          </div>
-        </div>
+					{/* Tag Filter */}
+					<div>
+						<h3 className="text-xl font-bold text-purple-700 mb-4">Filter Berdasarkan Tag:</h3>
+						<TagFilter
+							tags={availableTags}
+							selectedTags={selectedTags}
+							onTagToggle={handleTagToggle}
+						/>
+					</div>
+				</div>
 
 				{/* Blog Posts List */}
 				{filteredBlogPosts.length > 0 ? (

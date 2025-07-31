@@ -15,14 +15,14 @@ interface NavItemProps {
 interface PortfolioCardProps {
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 interface TestimonialCardProps {
   quote: string;
   author: string;
   role: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 interface ServiceFeatureProps {
@@ -35,9 +35,10 @@ interface ServiceFeatureProps {
 
 // Navigation Item Component
 const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
+  // Menggunakan Link dari Next.js jika ada href, jika tidak menggunakan button
   if (href) {
     return (
-      <Link href={href} className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
+      <Link href={href} className="block text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
         {title}
       </Link>
     );
@@ -45,7 +46,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
   return (
     <button
       onClick={onClick}
-      className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
+      className="block text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100 w-full text-left"
     >
       {title}
     </button>
@@ -55,7 +56,13 @@ const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
 // Portfolio Card Component
 const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, description, imageUrl }) => (
   <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <Image src={imageUrl} alt={title} className="w-full h-48 object-cover" />
+    {imageUrl ? (
+      <Image src={imageUrl} alt={title} className="w-full h-48 object-cover" width={400} height={300} />  // Menambahkan width dan height untuk optimasi  
+    ) : (
+      <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+        <span className="text-gray-500">No Image Available</span>
+      </div>
+    )}
     <div className="p-6">
       <h3 className="text-2xl font-bold text-purple-700 mb-3">{title}</h3>
       <p className="text-gray-600">{description}</p>
@@ -66,7 +73,13 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, description, image
 // Testimonial Card Component
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, avatarUrl }) => (
   <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <Image src={avatarUrl} alt={author} className="w-24 h-24 rounded-full mb-6 object-cover border-4 border-purple-300" />
+    {avatarUrl ? (
+      <Image src={avatarUrl} alt={author} className="w-24 h-24 rounded-full mb-4" width={96} height={96} />
+    ) : (
+      <div className="w-24 h-24 bg-gray-200 rounded-full mb-4 flex items-center justify-center">
+        <span className="text-gray-500">No Image</span>
+      </div>
+    )}
     <p className="text-lg italic text-gray-700 mb-6">{quote}</p>
     <p className="font-semibold text-purple-700">{author}</p>
     <p className="text-sm text-gray-500">{role}</p>
@@ -82,8 +95,7 @@ const ServiceFeature: React.FC<ServiceFeatureProps> = ({ icon, title, descriptio
   </div>
 );
 
-// Footer Component - Dipindahkan ke sini untuk keperluan pratinjau agar tidak ada error import
-// Di proyek Next.js Anda, ini harus tetap berada di src/components/Footer.tsx
+// Footer Component
 const Footer: React.FC = () => {
   return (
     <footer className="bg-purple-800 text-white py-10 text-center">
@@ -95,12 +107,14 @@ const Footer: React.FC = () => {
 
 // Main Landing Page Component
 const HomePage: React.FC = () => {
-  const [,setActiveSection] = useState<string>('home');
+  const [, setActiveSection] = useState<string>('home');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State untuk mengontrol sidebar
 
   // Function to handle navigation for sections within the same page
   const navigateTo = (section: string) => {
     setActiveSection(section);
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    setIsSidebarOpen(false); // Tutup sidebar setelah navigasi
   };
 
   return (
@@ -108,20 +122,86 @@ const HomePage: React.FC = () => {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-purple-700">Barizaloka Group</div>
-        <div className="flex space-x-6">
-          <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-6">
           <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
-          <NavItem title="Tentang Kami" onClick={() => navigateTo('about-us')} />
+          <NavItem title="Tentang" onClick={() => navigateTo('about-us')} />
+          <NavItem title="Layanan" onClick={() => navigateTo('services')} />
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
           <NavItem title="Blog" href="/blog" />
         </div>
-        <button className="bg-purple-500 hover:bg-purple-600 text-white p-2 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+
+        {/* Mobile Hamburger Icon */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="text-gray-700 hover:text-purple-700 focus:outline-none"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isSidebarOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Contact Button (visible on both, but adjusted for mobile layout) */}
+        <button className="bg-purple-500 hover:bg-purple-600 text-white p-2 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 hidden md:block">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.132V10.868a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button>
       </nav>
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed inset-y-0 right-0 z-40 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out md:hidden
+          ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        <div className="p-6 pt-24 flex flex-col space-y-4"> {/* pt-24 untuk memberi ruang di bawah navbar fixed */}
+          <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
+          <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
+          <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
+          <NavItem title="Blog" href="/blog" />
+          <button className="bg-purple-500 hover:bg-purple-600 text-white p-3 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 w-full mt-4">
+            <div className="flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.132V10.868a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Hubungi Kami</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* Overlay saat sidebar terbuka */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={() => setIsSidebarOpen(false)} // Tutup sidebar saat overlay diklik
+        ></div>
+      )}
 
       <main className="container mx-auto px-4 py-28">
         {/* Hero Section */}
@@ -140,8 +220,10 @@ const HomePage: React.FC = () => {
           <div className="lg:w-1/2 flex justify-center items-center relative">
             <div className="absolute inset-0 bg-purple-300 opacity-30 rounded-full blur-3xl animate-pulse-slow"></div>
             <Image
-              src="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Website+Mockup" // Placeholder for the image
+              src="/landing_page/computer.png" // Placeholder for the image
               alt="Website Mockup"
+              width={600} // Tambahkan width
+              height={400} // Tambahkan height
               className="relative z-10 w-full max-w-md lg:max-w-lg rounded-xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out"
             />
           </div>
@@ -207,32 +289,32 @@ const HomePage: React.FC = () => {
             <PortfolioCard
               title="Aplikasi E-commerce"
               description="Platform belanja online dengan fitur lengkap dan user-friendly."
-              imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=E-commerce"
+            // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=E-commerce"
             />
             <PortfolioCard
               title="Sistem Manajemen Sekolah"
               description="Solusi terintegrasi untuk administrasi dan pembelajaran sekolah."
-              imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=School+System"
+            // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=School+System"
             />
             <PortfolioCard
               title="Website Perusahaan"
               description="Situs web profesional untuk meningkatkan citra dan kehadiran online."
-              imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Company+Website"
+            // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Company+Website"
             />
             <PortfolioCard
               title="Aplikasi Reservasi Hotel"
               description="Memudahkan pengguna untuk mencari dan memesan kamar hotel."
-              imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Hotel+App"
+            // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Hotel+App"
             />
             <PortfolioCard
               title="Platform Edukasi Online"
               description="Menyediakan kursus dan materi pembelajaran interaktif."
-              imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Education+Platform"
+            // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Education+Platform"
             />
             <PortfolioCard
               title="Website Portofolio Fotografer"
               description="Menampilkan karya fotografi dengan desain yang elegan."
-              imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Photographer"
+            // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Photographer"
             />
           </div>
         </section>
@@ -245,19 +327,19 @@ const HomePage: React.FC = () => {
               quote="Pelayanan Barizaloka Group sangat profesional dan hasilnya melebihi ekspektasi kami. Website kami kini terlihat modern dan sangat fungsional!"
               author="Budi Santoso"
               role="CEO, PT Maju Bersama"
-              avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=BS"
+            // avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=BS"
             />
             <TestimonialCard
               quote="Aplikasi mobile yang dikembangkan sangat membantu bisnis kami. Timnya responsif dan selalu memberikan solusi terbaik."
               author="Siti Aminah"
               role="Pemilik, Kedai Kopi Bahagia"
-              avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=SA"
+            // avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=SA"
             />
             <TestimonialCard
               quote="Desain website yang dibuat Barizaloka Group sangat inovatif dan menarik. Kami sangat puas dengan hasilnya!"
               author="Joko Susilo"
               role="Founder, Startup Inovasi"
-              avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=JS"
+            // avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=JS"
             />
           </div>
         </section>
