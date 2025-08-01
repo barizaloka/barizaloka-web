@@ -1,7 +1,18 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment', // Direkomendasikan untuk keamanan tambahan
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;", // Direkomendasikan
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link'; // Gunakan ini di proyek Next.js asli
+import Link from 'next/link';
+import Image from 'next/image'; // Import komponen Image dari next/image
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -35,7 +36,16 @@ interface GalleryItem {
 
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => (
   <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <img src={course.imageUrl} alt={course.title} className="w-full h-48 object-cover" />
+    {/* Menggunakan next/image untuk performa yang lebih baik */}
+    <div className="relative w-full h-48">
+      <Image
+        src={course.imageUrl}
+        alt={course.title}
+        fill={true}
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
     <div className="p-6">
       <div className="text-sm font-semibold text-white bg-purple-600 rounded-full px-3 py-1 inline-block mb-3">
         {course.category}
@@ -73,7 +83,7 @@ const FAQAccordion: React.FC<{ faq: FAQItem }> = ({ faq }) => {
 
 const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
   <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-between h-full">
-    <p className="text-lg italic text-gray-700 mb-6 flex-grow">"{testimonial.quote}"</p>
+    <p className="text-lg italic text-gray-700 mb-6 flex-grow">{testimonial.quote}</p>
     <div>
       <p className="font-semibold text-purple-700">{testimonial.author}</p>
       <p className="text-sm text-gray-500">{testimonial.role}</p>
@@ -104,7 +114,7 @@ const LMSPage: React.FC = () => {
     { quote: 'Kursus di sini sangat membantu saya yang awam. Mentornya sabar dan materinya mudah dipahami.', author: 'Putri S.', role: 'Mahasiswa' },
     { quote: 'Sistem belajarnya fleksibel dan interaktif. Sangat cocok untuk saya yang bekerja.', author: 'Rudi H.', role: 'Profesional' },
   ];
-  
+
   // Data dummy untuk galeri
   const galleryItems: GalleryItem[] = [
     { type: 'image', url: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=Galeri+Foto+1', alt: 'Suasana Live di Discord' },
@@ -119,14 +129,24 @@ const LMSPage: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-purple-700">Barizaloka LMS</div>
         <Link href="/" className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
-          &larr; Kembali ke Beranda
+          ← Kembali ke Beranda
         </Link>
       </nav>
 
       <main className="flex-grow container mx-auto px-4 py-28">
-        <h1 className="text-5xl font-extrabold text-center text-purple-800 mb-16">
-          Pembelajaran Informatika Secara Gratis
-        </h1>
+        {/* --- Jumbotron Motivasi (Diperbarui) --- */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center my-16">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-purple-800 mb-4">
+                Pembelajaran Informatika Secara Gratis
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+                Dunia teknologi terus berkembang, jangan sampai tertinggal. Manfaatkan setiap kesempatan untuk belajar dan asah skill-mu di mana pun dan kapan pun. Masa depan digital ada di tanganmu!
+            </p>
+            <Link href="#courses" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                Mulai Belajar Sekarang
+            </Link>
+        </div>
+        {/* --- Akhir Jumbotron Motivasi --- */}
 
         {/* Courses Section */}
         <section id="courses" className="py-12">
@@ -142,7 +162,7 @@ const LMSPage: React.FC = () => {
             ))}
           </div>
         </section>
-        
+
         {/* FAQ Section */}
         <section id="faq" className="py-20 mt-10">
           <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-12">
@@ -166,7 +186,7 @@ const LMSPage: React.FC = () => {
             ))}
           </div>
         </section>
-        
+
         {/* Gallery Section */}
         <section id="gallery" className="py-20 mt-20">
           <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-12">
@@ -175,14 +195,24 @@ const LMSPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryItems.map((item, index) => (
               <div key={index} className="rounded-xl shadow-lg overflow-hidden bg-white">
+                {/* Menggunakan next/image untuk gambar galeri */}
                 {item.type === 'image' && (
-                  <img src={item.url} alt={item.alt} className="w-full h-auto object-cover" />
+                  <div className="relative w-full h-[400px]">
+                    <Image
+                      src={item.url}
+                      alt={item.alt || `Galeri Foto ${index + 1}`}
+                      fill={true}
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 )}
                 {item.type === 'video' && (
                   <div className="relative pt-[56.25%]"> {/* 16:9 Aspect Ratio */}
                     <iframe
                       className="absolute inset-0 w-full h-full"
                       src={item.url}
+                      frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       title={item.caption}

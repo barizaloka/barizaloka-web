@@ -95,16 +95,6 @@ const ServiceFeature: React.FC<ServiceFeatureProps> = ({ icon, title, descriptio
   </div>
 );
 
-// Footer Component
-const Footer: React.FC = () => {
-  return (
-    <footer className="bg-purple-800 text-white py-10 text-center">
-      <p>&copy; 2025 Barizaloka Group. All rights reserved.</p>
-    </footer>
-  );
-};
-
-
 // Main Landing Page Component
 const HomePage: React.FC = () => {
   const [, setActiveSection] = useState<string>('home');
