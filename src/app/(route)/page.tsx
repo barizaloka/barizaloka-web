@@ -38,20 +38,24 @@ const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
   // Menggunakan Link dari Next.js jika ada href, jika tidak menggunakan button
   if (href) {
     return (
-      <Link href={href} className="block text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
+      <a 
+        href={href} 
+        className="inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
+      >
         {title}
-      </Link>
+      </a>
     );
   }
   return (
     <button
       onClick={onClick}
-      className="block text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100 w-full text-left"
+      className="inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
     >
       {title}
     </button>
   );
 };
+
 
 // Portfolio Card Component
 const PortfolioCard: React.FC<PortfolioCardProps> = ({ title, description, imageUrl }) => (
@@ -111,14 +115,17 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-purple-700">Barizaloka Group</div>
+        <div className="text-2xl font-bold text-purple-700">
+          <Link href="/" className="hover:text-purple-800 transition-colors duration-300">
+            Barizaloka
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
-          <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
           <NavItem title="Tentang" onClick={() => navigateTo('about-us')} />
           <NavItem title="Layanan" onClick={() => navigateTo('services')} />
-          <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
+          <NavItem title="Kursus Gratis" href="/course" />
           <NavItem title="Blog" href="/blog" />
         </div>
 
@@ -153,14 +160,6 @@ const HomePage: React.FC = () => {
             </svg>
           </button>
         </div>
-
-        {/* Contact Button (visible on both, but adjusted for mobile layout) */}
-        <button className="bg-purple-500 hover:bg-purple-600 text-white p-2 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 hidden md:block">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.132V10.868a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </button>
       </nav>
 
       {/* Mobile Sidebar */}
@@ -173,15 +172,6 @@ const HomePage: React.FC = () => {
           <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
           <NavItem title="Blog" href="/blog" />
-          <button className="bg-purple-500 hover:bg-purple-600 text-white p-3 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 w-full mt-4">
-            <div className="flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.132V10.868a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Hubungi Kami</span>
-            </div>
-          </button>
         </div>
       </div>
 

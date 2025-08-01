@@ -127,10 +127,11 @@ const LMSPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
       {/* Navbar Sederhana */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-purple-700">Barizaloka LMS</div>
-        <Link href="/" className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
-          ← Kembali ke Beranda
-        </Link>
+        <div className="text-2xl font-bold text-purple-700">
+          <Link href="/course" className="hover:text-purple-800 transition-colors duration-300">
+            Barizaloka LMS
+          </Link>
+        </div>
       </nav>
 
       <main className="flex-grow container mx-auto px-4 py-28">
