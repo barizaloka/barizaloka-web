@@ -167,7 +167,8 @@ const HomePage: React.FC = () => {
         className={`fixed inset-y-0 right-0 z-40 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out md:hidden
           ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <div className="p-6 pt-24 flex flex-col space-y-4"> {/* pt-24 untuk memberi ruang di bawah navbar fixed */}
+        <div className="p-6 pt-24 flex flex-col space-y-4">
+          <NavItem title="Kursus Gratis" href="/course" />
           <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
           <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
