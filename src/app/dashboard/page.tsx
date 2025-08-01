@@ -153,7 +153,7 @@ const PlutoDashboard: React.FC = () => {
 						<FaEnvelope className="text-gray-600" />
 						<FaUser className="text-gray-600" />
 						<div className="flex items-center space-x-2">
-							<img src="https://via.placeholder.com/40" alt="User" className="w-10 h-10 rounded-full" />
+							{/* <img src="https://via.placeholder.com/40" alt="User" className="w-10 h-10 rounded-full" /> */}
 							<span className="font-semibold text-gray-800 hidden md:inline">John David</span>
 						</div>
 					</div>
