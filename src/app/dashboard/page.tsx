@@ -1,221 +1,234 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Import tag Image dari Next.js
+import {
+	FaUser,
+	FaTachometerAlt,
+	FaCubes,
+	FaPalette,
+	FaChartLine,
+	FaShoppingCart,
+	FaEnvelope,
+	FaCreditCard,
+	FaFile,
+	FaWrench,
+	FaFacebookF,
+	FaTwitter,
+	FaLinkedinIn,
+	FaGooglePlusG
+} from 'react-icons/fa';
+import { MdSettings } from 'react-icons/md';
 
-// --- Definisi Tipe Data (Interfaces) ---
+// --- Interfaces untuk komponen props ---
 
-interface Course {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  category: string;
+interface MetricCardProps {
+	icon: ReactNode;
+	value: string;
+	label: string;
+	subLabel?: string; // subLabel bersifat opsional
 }
 
-interface FAQItem {
-  question: string;
-  answer: string;
+interface SocialCardProps {
+	icon: ReactNode;
+	followers: string;
+	likes: string;
+	color: string;
 }
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-}
-
-interface GalleryItem {
-  type: 'image' | 'video';
-  url: string;
-  alt?: string;
-  caption?: string;
-}
-
-// --- Komponen-komponen ---
-
-const CourseCard: React.FC<{ course: Course }> = ({ course }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    {/* Menggunakan tag Image dari Next.js */}
-    <Image
-      src={course.imageUrl}
-      alt={course.title}
-      width={400} // Tetapkan lebar gambar
-      height={250} // Tetapkan tinggi gambar
-      className="w-full h-48 object-cover"
-    />
-    <div className="p-6">
-      <div className="text-sm font-semibold text-white bg-purple-600 rounded-full px-3 py-1 inline-block mb-3">
-        {course.category}
-      </div>
-      <h3 className="text-2xl font-bold text-purple-700 mb-2">{course.title}</h3>
-      <p className="text-gray-600 mb-4 line-clamp-3">{course.description}</p>
-      <Link href={`/lms/course/${course.id}`} className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-full shadow-md transition duration-300">
-        Pelajari Sekarang
-      </Link>
-    </div>
-  </div>
-);
-
-const FAQAccordion: React.FC<{ faq: FAQItem }> = ({ faq }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border-b border-gray-200 py-4">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full text-left text-lg font-semibold text-purple-800"
-      >
-        {faq.question}
-        <span className="text-purple-600 text-2xl transform transition-transform duration-200">
-          {isOpen ? '−' : '+'}
-        </span>
-      </button>
-      {isOpen && (
-        <p className="mt-4 text-gray-600 pr-8">
-          {faq.answer}
-        </p>
-      )}
-    </div>
-  );
+// --- Komponen Card Metrik ---
+const MetricCard: React.FC<MetricCardProps> = ({ icon, value, label, subLabel }) => {
+	return (
+		<div className="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+			<div className={`p-4 rounded-full ${subLabel ? 'bg-orange-100 text-orange-500' : 'bg-green-100 text-green-500'}`}>
+				{icon}
+			</div>
+			<div>
+				<p className="text-3xl font-bold text-gray-800">{value}</p>
+				<p className="text-sm text-gray-500">{label}</p>
+				{subLabel && <p className="text-xs text-gray-400 mt-1">{subLabel}</p>}
+			</div>
+		</div>
+	);
 };
 
-const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-  <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-between h-full">
-    <p className="text-lg italic text-gray-700 mb-6 flex-grow">{testimonial.quote}</p>
-    <div>
-      <p className="font-semibold text-purple-700">{testimonial.author}</p>
-      <p className="text-sm text-gray-500">{testimonial.role}</p>
-    </div>
-  </div>
-);
-
-// Halaman LMS Utama
-const LMSPage: React.FC = () => {
-  // Data dummy untuk kursus
-  const courses: Course[] = [
-    { id: '1', title: 'Dasar-Dasar Pemrograman', description: 'Pelajari konsep dasar algoritma, struktur data, dan logika pemrograman yang fundamental.', imageUrl: 'https://placehold.co/400x250/C084FC/FFFFFF?text=Coding', category: 'Pemrograman' },
-    { id: '2', title: 'Pengenalan Web Development', description: 'Mulai perjalanan Anda di dunia web dengan HTML, CSS, dan JavaScript.', imageUrl: 'https://placehold.co/400x250/A78BFA/FFFFFF?text=Web+Dev', category: 'Web Development' },
-    { id: '3', title: 'Data Science untuk Pemula', description: 'Panduan step-by-step untuk memahami dan mengolah data menggunakan Python.', imageUrl: 'https://placehold.co/400x250/8B5CF6/FFFFFF?text=Data+Science', category: 'Data Science' },
-    { id: '4', title: 'UI/UX Design dengan Figma', description: 'Pelajari cara mendesain antarmuka pengguna yang menarik dan intuitif.', imageUrl: 'https://placehold.co/400x250/FBCFE8/FFFFFF?text=UI/UX', category: 'Desain' },
-  ];
-
-  // Data dummy untuk FAQ
-  const faqs: FAQItem[] = [
-    { question: 'Apakah ini gratis?', answer: 'Benar, ini gratis tanpa ada syarat ikut apapun. Kami percaya pendidikan berkualitas harus dapat diakses oleh semua orang.' },
-    { question: 'Bagaimana sistem belajarnya?', answer: 'Akan ada mentornya yang membimbing teman-teman sesuai course yang dipilih yang bertanggung jawab mengarahkan dan tanya jawab, lalu teman-teman akan mempelajari materinya dari sumber seperti YouTube, maupun artikel, dan bahkan ada sesi di discord sendiri dan secara Live di YouTube.' },
-    { question: 'Apakah hasil pembelajaran di sini dapat sertifikat?', answer: 'Iya, setelah menyelesaikan course maka akan dapat sertifikat bahwa ananda telah menyelesaikan course tersebut. Sertifikat ini dapat digunakan untuk portofolio atau melamar pekerjaan.' },
-    { question: 'Siapa saja yang bisa bergabung?', answer: 'Siapa saja yang memiliki semangat belajar tinggi, terutama mereka yang tertarik di dunia teknologi dan informatika. Tidak ada batasan usia atau latar belakang pendidikan.' },
-  ];
-
-  // Data dummy untuk testimoni
-  const testimonials: Testimonial[] = [
-    { quote: 'Kursus di sini sangat membantu saya yang awam. Mentornya sabar dan materinya mudah dipahami.', author: 'Putri S.', role: 'Mahasiswa' },
-    { quote: 'Sistem belajarnya fleksibel dan interaktif. Sangat cocok untuk saya yang bekerja.', author: 'Rudi H.', role: 'Profesional' },
-  ];
-  
-  // Data dummy untuk galeri
-  const galleryItems: GalleryItem[] = [
-    { type: 'image', url: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=Galeri+Foto+1', alt: 'Suasana Live di Discord' },
-    { type: 'image', url: 'https://placehold.co/600x400/C084FC/FFFFFF?text=Galeri+Foto+2', alt: 'Mentor sedang mengajar' },
-    { type: 'video', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', caption: 'Video Sesi Live Belajar' }, // Ganti dengan URL video yang relevan
-    { type: 'image', url: 'https://placehold.co/600x400/A78BFA/FFFFFF?text=Galeri+Foto+3', alt: 'Tampilan Papan Diskusi' },
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
-      {/* Navbar Sederhana */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-purple-700">Barizaloka LMS</div>
-        <Link href="/" className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">
-          ← Kembali ke Beranda
-        </Link>
-      </nav>
-
-      <main className="flex-grow container mx-auto px-4 py-28">
-        <h1 className="text-5xl font-extrabold text-center text-purple-800 mb-16">
-          Pembelajaran Informatika Secara Gratis
-        </h1>
-
-        {/* Courses Section */}
-        <section id="courses" className="py-12">
-          <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-10">
-            Pilihan Course Kami
-          </h2>
-          <p className="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-            Temukan berbagai course menarik yang dirancang untuk membimbing Anda dari nol hingga mahir, dengan kurikulum yang terstruktur dan mentor berpengalaman.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {courses.map(course => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        </section>
-        
-        {/* FAQ Section */}
-        <section id="faq" className="py-20 mt-10">
-          <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-12">
-            Cara Belajar di Sini
-          </h2>
-          <div className="bg-white rounded-3xl shadow-xl p-8 max-w-3xl mx-auto">
-            {faqs.map((faq, index) => (
-              <FAQAccordion key={index} faq={faq} />
-            ))}
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 bg-purple-100 rounded-3xl shadow-xl mt-20">
-          <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-12">
-            Apa Kata Mereka
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} testimonial={testimonial} />
-            ))}
-          </div>
-        </section>
-        
-        {/* Gallery Section */}
-        <section id="gallery" className="py-20 mt-20">
-          <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-12">
-            Galeri Pembelajaran
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryItems.map((item, index) => (
-              <div key={index} className="rounded-xl shadow-lg overflow-hidden bg-white">
-                {item.type === 'image' && (
-                  // Menggunakan tag Image dari Next.js
-                  <Image
-                    src={item.url}
-                    alt={item.alt || `Galeri Foto ${index + 1}`}
-                    width={600} // Tetapkan lebar gambar
-                    height={400} // Tetapkan tinggi gambar
-                    className="w-full h-auto object-cover"
-                  />
-                )}
-                {item.type === 'video' && (
-                  <div className="relative pt-[56.25%]"> {/* 16:9 Aspect Ratio */}
-                    <iframe
-                      className="absolute inset-0 w-full h-full"
-                      src={item.url}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title={item.caption}
-                    ></iframe>
-                  </div>
-                )}
-                {item.caption && (
-                  <div className="p-4 text-center text-gray-700">
-                    {item.caption}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+// --- Komponen Card Sosial Media ---
+const SocialCard: React.FC<SocialCardProps> = ({ icon, followers, likes, color }) => {
+	return (
+		<div className={`bg-${color}-600 text-white p-6 rounded-xl shadow-lg`}>
+			<div className="flex items-center space-x-3 mb-4">
+				<div className="text-2xl">{icon}</div>
+			</div>
+			<div className="flex justify-between">
+				<div>
+					<p className="text-3xl font-bold">{followers}</p>
+					<p className="text-sm">Followers</p>
+				</div>
+				<div>
+					<p className="text-3xl font-bold">{likes}</p>
+					<p className="text-sm">Likes</p>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-export default LMSPage;
+// --- Komponen Utama Dashboard ---
+const PlutoDashboard: React.FC = () => {
+	const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+
+	const toggleSidebar = (): void => {
+		setIsSidebarOpen(!isSidebarOpen);
+	};
+
+	return (
+		<div className="flex min-h-screen bg-gray-100 font-sans text-gray-800">
+			{/* Sidebar */}
+			<aside className={`bg-gray-800 text-white w-64 space-y-6 py-7 px-2 fixed inset-y-0 left-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition duration-200 ease-in-out z-50`}>
+				{/* Header Sidebar */}
+				<div className="flex items-center space-x-2 px-4">
+					<FaUser className="text-2xl" />
+					<span className="text-xl font-bold">John David</span>
+				</div>
+
+				{/* Menu Navigasi */}
+				<nav>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 rounded-lg bg-orange-600 text-white">
+						<FaTachometerAlt />
+						<span>Dashboard</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaCubes />
+						<span>Widgets</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaPalette />
+						<span>UI Elements</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaChartLine />
+						<span>Charts</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaShoppingCart />
+						<span>Sales</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaEnvelope />
+						<span>Apps</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaCreditCard />
+						<span>Pricing Tables</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaFile />
+						<span>Forms</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<FaWrench />
+						<span>Additional Pages</span>
+					</Link>
+					<Link href="#" className="flex items-center space-x-2 py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-lg mt-2">
+						<MdSettings />
+						<span>Settings</span>
+					</Link>
+				</nav>
+			</aside>
+
+			{/* Konten Utama */}
+			<div className="flex-1 flex flex-col">
+				{/* Header Top Bar */}
+				<header className="flex justify-between items-center bg-white shadow-md p-4">
+					<div className="flex items-center space-x-4">
+						{/* Tombol untuk membuka/menutup sidebar di layar kecil */}
+						<button onClick={toggleSidebar} className="md:hidden text-gray-600 focus:outline-none">
+							<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+							</svg>
+						</button>
+						<h1 className="text-2xl font-semibold">Dashboard</h1>
+					</div>
+					<div className="flex items-center space-x-4">
+						<FaEnvelope className="text-gray-600" />
+						<FaUser className="text-gray-600" />
+						<div className="flex items-center space-x-2">
+							<img src="https://via.placeholder.com/40" alt="User" className="w-10 h-10 rounded-full" />
+							<span className="font-semibold text-gray-800 hidden md:inline">John David</span>
+						</div>
+					</div>
+				</header>
+
+				{/* Konten Dashboard */}
+				<main className="p-8 flex-1">
+					{/* Baris Metrik Atas */}
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+						<MetricCard
+							icon={<FaUser className="text-2xl" />}
+							value="2500"
+							label="New Users"
+							subLabel="Updated now"
+						/>
+						<MetricCard
+							icon={<FaChartLine className="text-2xl" />}
+							value="123.50"
+							label="Views"
+							subLabel="Updated now"
+						/>
+						<MetricCard
+							icon={<FaCubes className="text-2xl" />}
+							value="1,815"
+							label="Item Sold"
+							subLabel="Updated now"
+						/>
+						<MetricCard
+							icon={<FaEnvelope className="text-2xl" />}
+							value="54"
+							label="Comments"
+							subLabel="Updated now"
+						/>
+					</div>
+
+					{/* Baris Sosial Media */}
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+						<SocialCard
+							icon={<FaFacebookF />}
+							followers="35k"
+							likes="106"
+							color="blue"
+						/>
+						<SocialCard
+							icon={<FaTwitter />}
+							followers="56k"
+							likes="476"
+							color="sky"
+						/>
+						<SocialCard
+							icon={<FaLinkedinIn />}
+							followers="75M"
+							likes="289"
+							color="indigo"
+						/>
+						<SocialCard
+							icon={<FaGooglePlusG />}
+							followers="489"
+							likes="87"
+							color="red"
+						/>
+					</div>
+
+					{/* Bagian Grafik Area Bawah */}
+					<div className="bg-white p-6 rounded-xl shadow-lg">
+						<h3 className="text-xl font-semibold mb-4">Extra Area Chart</h3>
+						{/* Placeholder untuk grafik */}
+						<div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+							Placeholder untuk grafik (misalnya Chart.js atau Recharts)
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	);
+};
+
+export default PlutoDashboard;
