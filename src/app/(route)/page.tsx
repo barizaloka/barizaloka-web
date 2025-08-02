@@ -123,9 +123,9 @@ const HomePage: React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
-          <NavItem title="Tentang" onClick={() => navigateTo('about-us')} />
-          <NavItem title="Layanan" onClick={() => navigateTo('services')} />
           <NavItem title="Kursus Gratis" href="/course" />
+          <NavItem title="Layanan" onClick={() => navigateTo('services')} />
+            <NavItem title="Alur Belajar Koding" href="/roadmap" />
           <NavItem title="Blog" href="/blog" />
         </div>
 
@@ -172,6 +172,7 @@ const HomePage: React.FC = () => {
           <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
           <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
+            <NavItem title="Alur Belajar Koding" href="/roadmap" />
           <NavItem title="Blog" href="/blog" />
         </div>
       </div>
