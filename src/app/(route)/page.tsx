@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import QuotePopup from './components/QuotePopup';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -38,8 +39,8 @@ const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
   // Menggunakan Link dari Next.js jika ada href, jika tidak menggunakan button
   if (href) {
     return (
-      <a 
-        href={href} 
+      <a
+        href={href}
         className="inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
       >
         {title}
@@ -125,7 +126,7 @@ const HomePage: React.FC = () => {
         <div className="hidden md:flex space-x-6">
           <NavItem title="Kursus Gratis" href="/course" />
           <NavItem title="Layanan" onClick={() => navigateTo('services')} />
-            <NavItem title="Alur Belajar Koding" href="/roadmap" />
+          <NavItem title="Alur Belajar Koding" href="/roadmap" />
           <NavItem title="Blog" href="/blog" />
         </div>
 
@@ -172,7 +173,7 @@ const HomePage: React.FC = () => {
           <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
           <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
-            <NavItem title="Alur Belajar Koding" href="/roadmap" />
+          <NavItem title="Alur Belajar Koding" href="/roadmap" />
           <NavItem title="Blog" href="/blog" />
         </div>
       </div>
@@ -311,6 +312,10 @@ const HomePage: React.FC = () => {
           </div>
         </section>
       </main>
+
+      <div className="hidden md:block">
+        <QuotePopup />
+      </div>
     </div>
   );
 }
