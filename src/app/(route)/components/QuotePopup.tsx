@@ -65,11 +65,6 @@ const QuotePopup: React.FC = () => {
       setIsLoading(true);
       setError(null);
       try {
-        // const res = await fetch('/api/quote', { cache: 'no-store' });
-        // if (!res.ok) {
-        //   throw new Error('Failed to fetch quote');
-        // }
-        // const data: Quote = await res.json();
         setQuote({
             title: "Motivasi Hidup",
 						summary: "Kutipan yang menginspirasi untuk hidup lebih baik.",
