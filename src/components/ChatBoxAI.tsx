@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
 
 // Definisi interface untuk pesan chat
 interface ChatMessage {
@@ -54,6 +55,14 @@ const ChatBoxAI: React.FC = () => {
       chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
     }
   }, [messages]);
+
+
+  const pathname = usePathname();
+   const isRoadmapPage = pathname.startsWith('/roadmap');
+
+  if (isRoadmapPage) {
+    return <span></span>;
+  }
 
   return (
     <>
