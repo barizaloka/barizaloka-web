@@ -242,6 +242,23 @@ const HomePage: React.FC = () => {
           </div>
         </section>
 
+        {/* Video Embed Section */}
+        <section className="py-20 mt-20">
+          <h2 className="text-4xl font-extrabold text-center text-purple-800 mb-10">
+            Kenali Barizaloka Lebih Dekat!
+          </h2>
+          <div className="relative aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/wpRl32uR_so"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+        </section>
+
         {/* Services Section */}
         <section id="services" className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
           <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Produk yang Kami Tawarkan</h2>
@@ -365,16 +382,16 @@ const HomePage: React.FC = () => {
 
         {/* About Us Section */}
         <section id="about-us" className="py-20 mt-20">
-          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Tentang Kami</h2>
+          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Tentang Kami 🚀</h2>
           <div className="bg-white rounded-3xl shadow-xl p-10 max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
             <p className="mb-6">
-              Barizaloka Group adalah tim profesional yang berdedikasi dalam menyediakan solusi pengembangan website dan aplikasi mobile inovatif. Berdiri sejak 2025, kami berkomitmen membantu berbagai klien dari berbagai industri untuk mewujudkan ide-ide digital mereka.
+              Kami adalah <strong>Barizaloka Group</strong>, tim ahli yang siap membantu Anda mewujudkan ide digital. Sejak 2025, kami fokus membuat website dan aplikasi mobile yang inovatif.
             </p>
             <p className="mb-6">
-              Misi kami adalah memberdayakan bisnis dengan teknologi mutakhir, memastikan setiap proyek tidak hanya memenuhi tetapi melampaui ekspektasi. Kami percaya pada kolaborasi yang erat dengan klien, transparansi dalam setiap langkah, dan pengiriman produk berkualitas tinggi yang berorientasi pada hasil.
+              Tujuan kami sederhana: membuat bisnis Anda maju dengan teknologi canggih. Kami bekerja sama dengan Anda dari awal sampai akhir, transparan, dan memastikan hasilnya benar-benar memuaskan. 🤝
             </p>
             <p>
-              Dengan tim yang berpengalaman dan selalu mengikuti tren teknologi terbaru, kami siap menjadi mitra terpercaya Anda dalam perjalanan digital. Mari bersama-sama meroketkan ide Anda!
+              Bersama tim kami yang selalu up-to-date dengan teknologi, kami siap menjadi partner an
             </p>
           </div>
         </section>
