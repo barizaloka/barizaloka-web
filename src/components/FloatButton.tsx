@@ -9,7 +9,7 @@ interface ChatMessage {
   isUser: boolean;
 }
 
-const ChatBoxAI: React.FC = () => {
+const FloatButton: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState<string>('');
@@ -58,24 +58,48 @@ const ChatBoxAI: React.FC = () => {
 
 
   const pathname = usePathname();
-   const isRoadmapPage = pathname.startsWith('/roadmap');
+  // Memeriksa apakah path saat ini dimulai dengan '/roadmap'
+  const isRoadmapPage = pathname.startsWith('/roadmap');
 
+  // Jika ini adalah halaman roadmap, jangan render apa pun
   if (isRoadmapPage) {
-    return <span></span>;
+    return null; // Menggunakan null agar tidak ada elemen yang dirender
   }
+
+  // Nomor WhatsApp tujuan (ganti dengan nomor Anda, format internasional tanpa tanda + atau spasi)
+  const whatsappNumber = '6287714625940'; // Contoh: Ganti dengan nomor WhatsApp Anda
+  const whatsappMessage = encodeURIComponent('Halo, saya ingin bertanya tentang...'); // Pesan default
 
   return (
     <>
-      {/* Tombol Chatbox */}
-      <button
-        onClick={() => setIsChatOpen(true)}
-        className="fixed bottom-2 right-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-50 flex items-center gap-2"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-        Tanya AI
-      </button>
+      {/* Tombol WhatsApp */}
+      <div className="fixed bottom-2 right-2 flex flex-col items-end gap-4 z-50">
+        {/* Tombol WhatsApp */}
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 flex items-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 20.91A.996.996 0 0 0 1 22h22a1 1 0 0 0 .943-1.09l-2-18a1 1 0 0 0-.943-.91H2.057a1 1 0 0 0-.943.91l-2 18zM17.5 12.25c0-.414-.336-.75-.75-.75h-2a.75.75 0 0 0-.75.75v2a.75.75 0 0 0 .75.75h2a.75.75 0 0 0 .75-.75v-2zm-6 0c0-.414-.336-.75-.75-.75h-2a.75.75 0 0 0-.75.75v2a.75.75 0 0 0 .75.75h2a.75.75 0 0 0 .75-.75v-2zM5.5 12.25c0-.414-.336-.75-.75-.75h-2a.75.75 0 0 0-.75.75v2a.75.75 0 0 0 .75.75h2a.75.75 0 0 0 .75-.75v-2z" />
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+            <path d="M16.6 7.4c-.4-.4-.9-.6-1.4-.6s-1 .2-1.4.6l-1.8 1.8-1.8-1.8c-.4-.4-.9-.6-1.4-.6s-1 .2-1.4.6c-.8.8-.8 2.1 0 2.9l1.8 1.8-1.8 1.8c-.4.4-.6.9-.6 1.4s.2 1 .6 1.4c.8.8 2.1.8 2.9 0l1.8-1.8 1.8 1.8c.4.4.9.6 1.4.6s1-.2 1.4-.6c.8-.8.8-2.1 0-2.9l-1.8-1.8 1.8-1.8c.8-.8.8-2.1 0-2.9z" />
+          </svg>
+          Chat via WA
+        </a>
+
+        {/* Tombol Chatbox AI */}
+        <button
+          onClick={() => setIsChatOpen(true)}
+          className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 flex items-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          Tanya AI
+        </button>
+      </div>
 
       {/* Chatbox Modal */}
       {isChatOpen && (
@@ -106,9 +130,8 @@ const ChatBoxAI: React.FC = () => {
                   className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`rounded-lg p-3 max-w-[80%] ${
-                      msg.isUser ? 'bg-purple-200 text-purple-900' : 'bg-gray-100 text-gray-800'
-                    }`}
+                    className={`rounded-lg p-3 max-w-[80%] ${msg.isUser ? 'bg-purple-200 text-purple-900' : 'bg-gray-100 text-gray-800'
+                      }`}
                   >
                     {msg.text}
                   </div>
@@ -154,4 +177,4 @@ const ChatBoxAI: React.FC = () => {
   );
 };
 
-export default ChatBoxAI;
+export default FloatButton;

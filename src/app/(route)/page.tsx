@@ -40,6 +40,22 @@ interface PricingCardProps {
   features: string[];
 }
 
+// Tambahan: Interface untuk komponen TechCard
+interface TechCardProps {
+  icon: string; // Bisa berupa SVG path atau nama icon
+  title: string;
+  description: string;
+}
+
+// Tambahan: Komponen TechCard
+const TechCard: React.FC<TechCardProps> = ({ icon, title, description }) => (
+  <div className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
+    <div className="text-5xl mb-4 text-purple-600">{icon}</div>
+    <h3 className="text-xl font-bold text-purple-700 mb-2">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
+
 // --- Komponen-komponen ---
 
 // Navigation Item Component
@@ -393,6 +409,38 @@ const HomePage: React.FC = () => {
             <p>
               Bersama tim kami yang selalu up-to-date dengan teknologi, kami siap menjadi partner an
             </p>
+          </div>
+        </section>
+
+        {/* Tech Stack Section */}
+        <section id="tech-stack" className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
+          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Teknologi yang Kami Gunakan ⚙️</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-8">
+            <TechCard
+              icon="HTML5"
+              title="HTML, JS, & Tailwind"
+              description="Dasar dari setiap website modern. Kami menggunakannya untuk membuat website yang ringan, cepat, dan punya desain responsif."
+            />
+            <TechCard
+              icon="🚀"
+              title="Next.js"
+              description="Kami membangun website yang super cepat, SEO-friendly, dan dinamis menggunakan framework React terpopuler, Next.js."
+            />
+            <TechCard
+              icon="🌐"
+              title="WordPress"
+              description="Solusi CMS (Content Management System) yang fleksibel dan kuat. Cocok untuk blog, e-commerce, atau website perusahaan yang mudah dikelola."
+            />
+            <TechCard
+              icon="📱"
+              title="Flutter"
+              description="Pengembangan aplikasi mobile lintas platform yang cantik dan berperforma tinggi. Satu kode untuk Android dan iOS."
+            />
+            <TechCard
+              icon="🐘"
+              title="Laravel"
+              description="Framework PHP yang elegan dan solid untuk membangun aplikasi web yang kompleks dan skalabel, mulai dari API hingga e-commerce."
+            />
           </div>
         </section>
       </main>
