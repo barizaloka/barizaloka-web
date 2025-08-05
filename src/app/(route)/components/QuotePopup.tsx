@@ -111,7 +111,7 @@ const QuotePopup: React.FC = () => {
               <div className="text-3xl mr-3 text-purple-600">💡</div>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-purple-700">Kutipan Menggugah Jiwa</p>
-                <p className="text-xs text-gray-600 line-clamp-2">"{quote.summary}"</p>
+                <p className="text-xs text-gray-600 line-clamp-2">{quote.summary}</p>
               </div>
             </div>
           </motion.div>
