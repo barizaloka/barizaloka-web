@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { FaYoutube } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const phoneNumber = '6287714625940';
@@ -8,7 +9,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gradient-to-r from-purple-700 to-purple-900 text-white py-10 text-center shadow-lg">
-      <div className="container mx-auto px-4 animate-fade-in"> {/* Animasi fade-in */}
+      <div className="container mx-auto px-4 animate-fade-in">
         <p className="mb-2 text-lg font-semibold flex items-center justify-center">
           ✨
           <Link href="/" className="hover:underline transition duration-300 ease-in-out transform hover:scale-105">
@@ -33,6 +34,20 @@ const Footer: React.FC = () => {
             {phoneNumber} 
           </a>
         </p>
+
+        {/* Bagian Media Sosial Baru */}
+        <div className="flex justify-center items-center mt-4 space-x-4">
+          <a 
+            href="https://youtube.com/@barizaloka" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-red-500 transition duration-300 ease-in-out transform hover:scale-125"
+            aria-label="YouTube"
+          >
+            <FaYoutube size={30} />
+          </a>
+        </div>
+
         <p className="mt-4 text-sm opacity-80">
           © {new Date().getFullYear()} Barizaloka Group. All rights reserved. 🚀
         </p>

@@ -117,7 +117,7 @@ const HomePage: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-purple-700">
           <Link href="/" className="hover:text-purple-800 transition-colors duration-300">
-            Barizaloka
+            Barizaloka Group
           </Link>
         </div>
 
@@ -125,8 +125,8 @@ const HomePage: React.FC = () => {
         <div className="hidden md:flex space-x-6">
           <NavItem title="Tentang" onClick={() => navigateTo('about-us')} />
           <NavItem title="Layanan" onClick={() => navigateTo('services')} />
-          <NavItem title="Kursus Gratis" href="/course" />
-          <NavItem title="Blog" href="/blog" />
+          {/* <NavItem title="Kursus Gratis" href="/course" />
+          <NavItem title="Blog" href="/blog" /> */}
         </div>
 
         {/* Mobile Hamburger Icon */}
@@ -170,9 +170,9 @@ const HomePage: React.FC = () => {
         <div className="p-6 pt-24 flex flex-col space-y-4">
           <NavItem title="Kursus Gratis" href="/course" />
           <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
-          <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} />
+          {/* <NavItem title="Portfolio" onClick={() => navigateTo('portfolio')} /> */}
           <NavItem title="Testimoni" onClick={() => navigateTo('testimonials')} />
-          <NavItem title="Blog" href="/blog" />
+          {/* <NavItem title="Blog" href="/blog" /> */}
         </div>
       </div>
 
@@ -194,9 +194,9 @@ const HomePage: React.FC = () => {
             <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto lg:mx-0 animate-fade-in-up delay-200">
               Jasa pembuatan website dan aplikasi mobile guna meroketkan idemu menjadi dalam genggaman dengan cara yang sangat mudah dari tim profesional.
             </p>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-fade-in-up delay-400">
+            {/* <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-fade-in-up delay-400">
               Mulai Sekarang
-            </button>
+            </button> */}
           </div>
           <div className="lg:w-1/2 flex justify-center items-center relative">
             <div className="absolute inset-0 bg-purple-300 opacity-30 rounded-full blur-3xl animate-pulse-slow"></div>
@@ -225,9 +225,9 @@ const HomePage: React.FC = () => {
               description="Menciptakan aplikasi Android dan iOS yang inovatif, dengan performa tinggi dan user experience yang intuitif."
             />
             <ServiceFeature
-              icon="🎨"
-              title="Desain UI/UX Profesional"
-              description="Mendesain antarmuka pengguna yang menarik dan pengalaman pengguna yang mulus untuk semua produk digital Anda."
+              icon="🤖"
+              title="Pembuatan Bot WhatsApp Kustom"
+              description="Otomatisasi komunikasi bisnis Anda dengan bot WhatsApp yang cerdas, mulai dari balasan otomatis hingga integrasi e-commerce."
             />
           </div>
         </section>
@@ -249,7 +249,7 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Portfolio Section */}
-        <section id="portfolio" className="py-20 mt-20">
+        {/* <section id="portfolio" className="py-20 mt-20">
           <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Portfolio Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <PortfolioCard
@@ -283,32 +283,20 @@ const HomePage: React.FC = () => {
             // imageUrl="https://placehold.co/400x300/6D28D9/FFFFFF?text=Photographer"
             />
           </div>
-        </section>
+        </section> */}
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 bg-purple-100 rounded-3xl shadow-xl mt-20">
+        {/* <section id="testimonials" className="py-20 bg-purple-100 rounded-3xl shadow-xl mt-20">
           <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Apa Kata Mereka</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <TestimonialCard
               quote="Pelayanan Barizaloka Group sangat profesional dan hasilnya melebihi ekspektasi kami. Website kami kini terlihat modern dan sangat fungsional!"
-              author="Budi Santoso"
-              role="CEO, PT Maju Bersama"
+              author="Muhammad Ahlat Thoba'i"
+              role="Founder, Barizaloka Group"
             // avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=BS"
             />
-            <TestimonialCard
-              quote="Aplikasi mobile yang dikembangkan sangat membantu bisnis kami. Timnya responsif dan selalu memberikan solusi terbaik."
-              author="Siti Aminah"
-              role="Pemilik, Kedai Kopi Bahagia"
-            // avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=SA"
-            />
-            <TestimonialCard
-              quote="Desain website yang dibuat Barizaloka Group sangat inovatif dan menarik. Kami sangat puas dengan hasilnya!"
-              author="Joko Susilo"
-              role="Founder, Startup Inovasi"
-            // avatarUrl="https://placehold.co/100x100/9CA3AF/FFFFFF?text=JS"
-            />
           </div>
-        </section>
+        </section> */}
       </main>
     </div>
   );
