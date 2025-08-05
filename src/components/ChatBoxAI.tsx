@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 // Definisi interface untuk pesan chat
 interface ChatMessage {
   text: string;
-  isUser: boolean; 
+  isUser: boolean;
 }
 
 const ChatBoxAI: React.FC = () => {
@@ -38,7 +38,7 @@ const ChatBoxAI: React.FC = () => {
 
       const result = await response.json();
       const botResponse = result.text || 'Maaf, ada masalah saat memproses permintaan Anda.';
-      
+
       // Menambahkan pesan dari AI dengan properti isUser: false
       setMessages(prevMessages => [...prevMessages, { text: botResponse, isUser: false }]);
 
@@ -48,7 +48,7 @@ const ChatBoxAI: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (chatMessagesRef.current) {
@@ -69,7 +69,7 @@ const ChatBoxAI: React.FC = () => {
       {/* Tombol Chatbox */}
       <button
         onClick={() => setIsChatOpen(true)}
-        className="fixed bottom-8 right-8 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-50 flex items-center gap-2"
+        className="fixed bottom-2 right-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-50 flex items-center gap-2"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -79,9 +79,13 @@ const ChatBoxAI: React.FC = () => {
 
       {/* Chatbox Modal */}
       {isChatOpen && (
-        <div className="fixed bottom-24 right-8 w-full max-w-sm h-96 bg-white rounded-xl shadow-2xl flex flex-col z-50">
+        <div className="
+          fixed bottom-3 left-2 right-2 h-[60vh] /* Mobile styles: full width, 60% height, sticks to bottom */
+          sm:bottom-24 sm:right-8 sm:left-auto sm:max-w-sm sm:h-96 /* Desktop styles: original positioning and size */
+          bg-white rounded-xl shadow-2xl flex flex-col z-50
+        ">
           <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-purple-600 text-white rounded-t-xl">
-            <h3 className="font-bold">Chat dengan AI</h3>
+            <h3 className="font-bold">Chat dengan AI (Beta)</h3>
             <button onClick={() => setIsChatOpen(false)} className="text-white hover:text-gray-200">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -93,7 +97,7 @@ const ChatBoxAI: React.FC = () => {
           <div ref={chatMessagesRef} className="flex-grow p-4 overflow-y-auto space-y-4">
             {messages.length === 0 ? (
               <div className="text-center text-gray-500 italic">
-                Halo! Silakan ajukan pertanyaan seputar LMS kami atau hal lainnya.
+                Halo! Berikut adalah AI yang masih tahap pengembangan.
               </div>
             ) : (
               messages.map((msg, index) => (

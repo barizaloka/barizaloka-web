@@ -138,7 +138,7 @@ const HomePage: React.FC = () => {
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
     setIsSidebarOpen(false);
   };
-  
+
   // Efek untuk memastikan tab 'pelajar' aktif secara default saat komponen dimuat
   useEffect(() => {
     setActiveTab('pelajar');
@@ -273,7 +273,7 @@ const HomePage: React.FC = () => {
             <p className="text-xl text-center text-gray-600 mb-16 max-w-2xl mx-auto">
               Harga Jujur, Fitur Maksimal! Pilih paket yang sesuai dengan kebutuhan website-mu, dari website personal hingga bisnis.
             </p>
-            
+
             {/* Tab Controls */}
             <div className="flex justify-center mb-10">
               <button
@@ -292,72 +292,72 @@ const HomePage: React.FC = () => {
 
             {/* Tab Content for Pelajar */}
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${activeTab === 'pelajar' ? 'block' : 'hidden'}`}>
-                <PricingCard
-                    title="Paket Dasar"
-                    price="Rp 5.000/bulan"
-                    description="Ideal untuk website personal atau landing page sederhana."
-                    features={[
-                        "Maksimal 1 Halaman",
-                        "Hosting & Custom Domain",
-                    ]}
-                />
-                <PricingCard
-                    title="Paket Personal"
-                    price="Rp 10.000/bulan"
-                    description="Tingkatkan website personal Anda dengan fitur revisi."
-                    features={[
-                        "Maksimal 1 Halaman",
-                        "Hosting & Custom Domain",
-                        "Revisi 1x per bulan"
-                    ]}
-                />
+              <PricingCard
+                title="Paket Dasar"
+                price="Rp 5.000/bulan"
+                description="Ideal untuk website personal atau landing page sederhana."
+                features={[
+                  "Maksimal 1 Halaman",
+                  "Hosting & Custom Domain",
+                ]}
+              />
+              <PricingCard
+                title="Paket Personal"
+                price="Rp 10.000/bulan"
+                description="Tingkatkan website personal Anda dengan fitur revisi."
+                features={[
+                  "Maksimal 1 Halaman",
+                  "Hosting & Custom Domain",
+                  "Revisi 1x per bulan"
+                ]}
+              />
             </div>
 
             {/* Tab Content for UMKM */}
             <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ${activeTab === 'umkm' ? 'block' : 'hidden'}`}>
-                <PricingCard
-                    title="Paket Bisnis"
-                    price="Rp 20.000/bulan"
-                    description="Solusi lengkap untuk bisnis yang membutuhkan lebih banyak halaman."
-                    features={[
-                        "Maksimal 3 Halaman",
-                        "Hosting & Custom Domain",
-                        "Revisi 1x per bulan"
-                    ]}
-                />
-                <PricingCard
-                    title="Paket Premium"
-                    price="Rp 25.000/bulan"
-                    description="Untuk bisnis yang berkembang dengan kebutuhan website yang kompleks."
-                    features={[
-                        "Maksimal 5 Halaman",
-                        "Hosting & Custom Domain",
-                        "Revisi 1x per bulan"
-                    ]}
-                />
-                <PricingCard
-                    title="Paket Usaha"
-                    price="Rp 50.000/bulan"
-                    description="Solusi terintegrasi untuk UMKM yang ingin menonjolkan produk dan layanan secara online."
-                    features={[
-                        "Maksimal 10 Halaman",
-                        "Hosting & Custom Domain",
-                        "Integrasi E-commerce Dasar",
-                        "Laporan Analitik Bulanan"
-                    ]}
-                />
-                <PricingCard
-                    title="Paket UMKM Pro"
-                    price="Rp 100.000/bulan"
-                    description="Layanan premium untuk bisnis yang membutuhkan fitur marketing dan dukungan penuh."
-                    features={[
-                        "Halaman Tidak Terbatas",
-                        "Hosting & Custom Domain",
-                        "Integrasi Penuh E-commerce",
-                        "Dukungan Prioritas 24/7",
-                        "SEO & Marketing Tools"
-                    ]}
-                />
+              <PricingCard
+                title="Paket Bisnis"
+                price="Rp 20.000/bulan"
+                description="Solusi lengkap untuk bisnis yang membutuhkan lebih banyak halaman."
+                features={[
+                  "Maksimal 3 Halaman",
+                  "Hosting & Custom Domain",
+                  "Revisi 1x per bulan"
+                ]}
+              />
+              <PricingCard
+                title="Paket Premium"
+                price="Rp 25.000/bulan"
+                description="Untuk bisnis yang berkembang dengan kebutuhan website yang kompleks."
+                features={[
+                  "Maksimal 5 Halaman",
+                  "Hosting & Custom Domain",
+                  "Revisi 1x per bulan"
+                ]}
+              />
+              <PricingCard
+                title="Paket Usaha"
+                price="Rp 50.000/bulan"
+                description="Solusi terintegrasi untuk UMKM yang ingin menonjolkan produk dan layanan secara online."
+                features={[
+                  "Maksimal 10 Halaman",
+                  "Hosting & Custom Domain",
+                  "Integrasi E-commerce Dasar",
+                  "Laporan Analitik Bulanan"
+                ]}
+              />
+              <PricingCard
+                title="Paket UMKM Pro"
+                price="Rp 100.000/bulan"
+                description="Layanan premium untuk bisnis yang membutuhkan fitur marketing dan dukungan penuh."
+                features={[
+                  "Halaman Tidak Terbatas",
+                  "Hosting & Custom Domain",
+                  "Integrasi Penuh E-commerce",
+                  "Dukungan Prioritas 24/7",
+                  "SEO & Marketing Tools"
+                ]}
+              />
             </div>
           </div>
         </section>
@@ -368,7 +368,7 @@ const HomePage: React.FC = () => {
           <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Tentang Kami</h2>
           <div className="bg-white rounded-3xl shadow-xl p-10 max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
             <p className="mb-6">
-              Barizaloka Group adalah tim profesional yang berdedikasi dalam menyediakan solusi pengembangan website dan aplikasi mobile inovatif. Berdiri sejak [Tahun Berdiri, contoh: 2020], kami telah membantu berbagai klien dari berbagai industri untuk mewujudkan ide-ide digital mereka.
+              Barizaloka Group adalah tim profesional yang berdedikasi dalam menyediakan solusi pengembangan website dan aplikasi mobile inovatif. Berdiri sejak 2025, kami berkomitmen membantu berbagai klien dari berbagai industri untuk mewujudkan ide-ide digital mereka.
             </p>
             <p className="mb-6">
               Misi kami adalah memberdayakan bisnis dengan teknologi mutakhir, memastikan setiap proyek tidak hanya memenuhi tetapi melampaui ekspektasi. Kami percaya pada kolaborasi yang erat dengan klien, transparansi dalam setiap langkah, dan pengiriman produk berkualitas tinggi yang berorientasi pada hasil.
