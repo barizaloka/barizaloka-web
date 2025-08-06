@@ -16,9 +16,9 @@ export async function generateStaticParams() {
 }
 
 // Komponen Halaman Detail Blog (Server Component)
-const BlogPostPage: React.FC<{ params: { slug: string } }> = async ({
-  params,
-}) => {
+/* eslint-disable */
+const BlogPostPage: React.FC<{ params: any }> = async props => {
+  const params = await props.params;
   // Mengatasi error "params should be awaited" dengan memastikan akses yang jelas
   // Meskipun params secara default sudah object, ini bisa membantu linter/compiler
   console.log(params)

@@ -64,11 +64,10 @@ export async function getAllPostsMetadata(): Promise<BlogPost[]> {
     const frontmatter = matterResult.data as Omit<BlogPost, 'slug' | 'contentHtml'>;
     
     // Untuk deskripsi, ambil dari frontmatter. Jika tidak ada, ambil beberapa baris pertama dari konten
-    const description = frontmatter.description || matterResult.content.split('\n').slice(0, 2).join(' ').substring(0, 150) + '...';
+    // const description = frontmatter.description || matterResult.content.split('\n').slice(0, 2).join(' ').substring(0, 150) + '...';
 
     allPostsData.push({
       slug,
-      description, // Gunakan deskripsi dari frontmatter atau yang dipotong
       ...frontmatter, // Ini akan menimpa description jika ada di frontmatter
     });
   }
