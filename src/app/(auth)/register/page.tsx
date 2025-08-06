@@ -14,7 +14,11 @@ const RegisterPage: React.FC = () => {
     address: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -33,11 +37,16 @@ const RegisterPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
       <main className="flex-grow flex items-center justify-center p-4">
         <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8 transform transition-transform duration-300 hover:scale-105">
-          <h1 className="text-4xl font-extrabold text-center text-purple-800 mb-8">Daftar Akun Baru</h1>
+          <h1 className="text-4xl font-extrabold text-center text-purple-800 mb-8">
+            Daftar Akun Baru
+          </h1>
           <form onSubmit={handleRegister} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-gray-700 font-medium mb-1" htmlFor="username">
+                <label
+                  className="block text-gray-700 font-medium mb-1"
+                  htmlFor="username"
+                >
                   Username
                 </label>
                 <input
@@ -51,7 +60,10 @@ const RegisterPage: React.FC = () => {
                 <p className="text-xs text-red-500 mt-1">Ini wajib diisi.</p>
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1" htmlFor="name">
+                <label
+                  className="block text-gray-700 font-medium mb-1"
+                  htmlFor="name"
+                >
                   Nama Lengkap
                 </label>
                 <input
@@ -63,7 +75,10 @@ const RegisterPage: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1" htmlFor="email">
+                <label
+                  className="block text-gray-700 font-medium mb-1"
+                  htmlFor="email"
+                >
                   Email
                 </label>
                 <input
@@ -77,7 +92,10 @@ const RegisterPage: React.FC = () => {
                 <p className="text-xs text-red-500 mt-1">Ini wajib diisi.</p>
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1" htmlFor="gender">
+                <label
+                  className="block text-gray-700 font-medium mb-1"
+                  htmlFor="gender"
+                >
                   Jenis Kelamin
                 </label>
                 <select
@@ -87,14 +105,19 @@ const RegisterPage: React.FC = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   required
                 >
-                  <option value="" disabled>Pilih...</option>
+                  <option value="" disabled>
+                    Pilih...
+                  </option>
                   <option value="male">Laki-laki</option>
                   <option value="female">Perempuan</option>
                 </select>
                 <p className="text-xs text-red-500 mt-1">Ini wajib diisi.</p>
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1" htmlFor="phone_number">
+                <label
+                  className="block text-gray-700 font-medium mb-1"
+                  htmlFor="phone_number"
+                >
                   Nomor Telepon
                 </label>
                 <input
@@ -106,7 +129,10 @@ const RegisterPage: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1" htmlFor="born">
+                <label
+                  className="block text-gray-700 font-medium mb-1"
+                  htmlFor="born"
+                >
                   Tanggal Lahir
                 </label>
                 <input
@@ -119,7 +145,10 @@ const RegisterPage: React.FC = () => {
               </div>
             </div>
             <div>
-              <label className="block text-gray-700 font-medium mb-1" htmlFor="address">
+              <label
+                className="block text-gray-700 font-medium mb-1"
+                htmlFor="address"
+              >
                 Alamat
               </label>
               <textarea
@@ -139,7 +168,10 @@ const RegisterPage: React.FC = () => {
           </form>
           <p className="text-center text-gray-600 mt-6">
             Sudah punya akun?{' '}
-            <Link href="/login" className="text-purple-600 hover:text-purple-800 font-semibold">
+            <Link
+              href="/login"
+              className="text-purple-600 hover:text-purple-800 font-semibold"
+            >
               Login di sini
             </Link>
           </p>

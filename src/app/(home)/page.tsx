@@ -70,7 +70,8 @@ interface TechCardProps {
  * @param {NavItemProps} props - Properti untuk komponen NavItem.
  */
 const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
-  const commonClasses = "inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100";
+  const commonClasses =
+    'inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100';
   if (href) {
     return (
       <a href={href} className={commonClasses}>
@@ -90,7 +91,11 @@ const NavItem: React.FC<NavItemProps> = ({ title, onClick, href }) => {
  * @description Menampilkan fitur layanan dengan ikon, judul, dan deskripsi.
  * @param {ServiceFeatureProps} props - Properti untuk komponen ServiceFeature.
  */
-const ServiceFeature: React.FC<ServiceFeatureProps> = ({ icon, title, description }) => (
+const ServiceFeature: React.FC<ServiceFeatureProps> = ({
+  icon,
+  title,
+  description,
+}) => (
   <div className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300 ease-in-out">
     <div className="text-5xl mb-4 text-purple-600">{icon}</div>
     <h3 className="text-xl font-bold text-purple-700 mb-2">{title}</h3>
@@ -103,7 +108,12 @@ const ServiceFeature: React.FC<ServiceFeatureProps> = ({ icon, title, descriptio
  * @description Menampilkan kartu paket harga dengan judul, harga, deskripsi, dan daftar fitur.
  * @param {PricingCardProps} props - Properti untuk komponen PricingCard.
  */
-const PricingCard: React.FC<PricingCardProps> = ({ title, price, description, features }) => (
+const PricingCard: React.FC<PricingCardProps> = ({
+  title,
+  price,
+  description,
+  features,
+}) => (
   <div className="bg-white rounded-xl shadow-lg p-8 text-center flex flex-col transform hover:scale-105 transition-transform duration-300 ease-in-out">
     <h3 className="text-3xl font-extrabold text-purple-700 mb-2">{title}</h3>
     <p className="text-4xl font-bold text-gray-800 mb-4">{price}</p>
@@ -111,8 +121,18 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, description, fe
     <ul className="text-left text-gray-700 space-y-2 flex-grow">
       {features.map((feature, index) => (
         <li key={index} className="flex items-start">
-          <svg className="h-6 w-6 text-purple-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <svg
+            className="h-6 w-6 text-purple-500 mr-2 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
           </svg>
           <span>{feature}</span>
         </li>
@@ -180,7 +200,10 @@ const HomePage: React.FC = () => {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-purple-700">
-          <Link href="/" className="hover:text-purple-800 transition-colors duration-300">
+          <Link
+            href="/"
+            className="hover:text-purple-800 transition-colors duration-300"
+          >
             Barizaloka Group
           </Link>
         </div>
@@ -191,6 +214,8 @@ const HomePage: React.FC = () => {
           <NavItem title="Pendiri" onClick={() => navigateTo('founder')} />
           <NavItem title="Layanan" onClick={() => navigateTo('services')} />
           <NavItem title="Paket Harga" onClick={() => navigateTo('pricing')} />
+          <NavItem title="Blog" onClick={() => navigateTo('blog')} />{' '}
+          {/* Added Blog Nav Item */}
         </div>
 
         {/* Mobile Hamburger Icon */}
@@ -234,8 +259,13 @@ const HomePage: React.FC = () => {
         <div className="p-6 pt-24 flex flex-col space-y-4">
           <NavItem title="Tentang" onClick={() => navigateTo('about-us')} />
           <NavItem title="Pendiri" onClick={() => navigateTo('founder')} />
-          <NavItem title="Layanan Kami" onClick={() => navigateTo('services')} />
+          <NavItem
+            title="Layanan Kami"
+            onClick={() => navigateTo('services')}
+          />
           <NavItem title="Paket Harga" onClick={() => navigateTo('pricing')} />
+          <NavItem title="Blog" onClick={() => navigateTo('blog')} />{' '}
+          {/* Added Blog Nav Item */}
         </div>
       </div>
 
@@ -250,13 +280,18 @@ const HomePage: React.FC = () => {
 
       <main className="container mx-auto px-4 py-28">
         {/* Hero Section */}
-        <section id="home" className="flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-120px)]">
+        <section
+          id="home"
+          className="flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-120px)]"
+        >
           <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
             <h1 className="text-6xl font-extrabold text-purple-800 leading-tight mb-6 animate-fade-in-up">
               Roketkan <br /> Idemu
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto lg:mx-0 animate-fade-in-up delay-200">
-              Jasa pembuatan website dan aplikasi mobile guna meroketkan idemu menjadi dalam genggaman dengan cara yang sangat mudah dari tim profesional.
+              Jasa pembuatan website dan aplikasi mobile guna meroketkan idemu
+              menjadi dalam genggaman dengan cara yang sangat mudah dari tim
+              profesional.
             </p>
           </div>
           <div className="lg:w-1/2 flex justify-center items-center relative">
@@ -289,7 +324,10 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Profil Pendiri Section */}
-        <section id="founder" className="py-20 mt-20 bg-white rounded-3xl shadow-xl">
+        <section
+          id="founder"
+          className="py-20 mt-20 bg-white rounded-3xl shadow-xl"
+        >
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="md:w-1/3 flex justify-center">
               <Image
@@ -301,28 +339,65 @@ const HomePage: React.FC = () => {
               />
             </div>
             <div className="md:w-2/3 text-center md:text-left">
-              <h2 className="text-4xl font-extrabold text-purple-800 mb-4">Mengenal Sang Pendiri</h2>
+              <h2 className="text-4xl font-extrabold text-purple-800 mb-4">
+                Mengenal Sang Pendiri
+              </h2>
               <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                Barizaloka Group didirikan oleh seorang pemuda yang lahir dan besar di sebuah desa di Kabupaten Rembang, Jawa Tengah. Berbekal semangat dan keahlian di bidang pengembangan web, ia memulai perjalanan digital ini untuk membantu mewujudkan berbagai ide inovatif.
+                Barizaloka Group didirikan oleh seorang pemuda yang lahir dan
+                besar di sebuah desa di Kabupaten Rembang, Jawa Tengah. Berbekal
+                semangat dan keahlian di bidang pengembangan web, ia memulai
+                perjalanan digital ini untuk membantu mewujudkan berbagai ide
+                inovatif.
               </p>
               <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
                 {/* Tombol Kunjungi Website Portfolioku */}
-                <a href="https://github.com/ahlaiptek" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-300">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.974 6.974 0 0111.336 0l.138.627-.001.006a.5.5 0 01-.408.349H4.603a.5.5 0 01-.408-.349l-.001-.006.138-.627zM10 2.5a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zM2.5 10a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zm15 0a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zM5.184 14.816a.5.5 0 01.707 0l1.414 1.414a.5.5 0 01-.707.707L5.184 15.523a.5.5 0 010-.707zm9.632 0a.5.5 0 010 .707l-1.414 1.414a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zM14.816 5.184a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM5.184 5.184a.5.5 0 010 .707l1.414 1.414a.5.5 0 01.707-.707L5.891 5.184a.5.5 0 01-.707 0z" clipRule="evenodd" />
+                <a
+                  href="https://github.com/ahlaiptek"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-300"
+                >
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.974 6.974 0 0111.336 0l.138.627-.001.006a.5.5 0 01-.408.349H4.603a.5.5 0 01-.408-.349l-.001-.006.138-.627zM10 2.5a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zM2.5 10a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zm15 0a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zM5.184 14.816a.5.5 0 01.707 0l1.414 1.414a.5.5 0 01-.707.707L5.184 15.523a.5.5 0 010-.707zm9.632 0a.5.5 0 010 .707l-1.414 1.414a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zM14.816 5.184a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM5.184 5.184a.5.5 0 010 .707l1.414 1.414a.5.5 0 01.707-.707L5.891 5.184a.5.5 0 01-.707 0z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   Kunjungi Website Portfolioku
                 </a>
                 {/* Tombol LinkedIn */}
-                <a href="https://linkedin.com/in/ahlaiptek" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <a
+                  href="https://linkedin.com/in/ahlaiptek"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
+                >
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path d="M16.3 0H3.7C1.6 0 0 1.6 0 3.7v12.6C0 18.4 1.6 20 3.7 20h12.6c2.1 0 3.7-1.6 3.7-3.7V3.7C20 1.6 18.4 0 16.3 0zM6 17H3V7h3v10zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM17 17h-3V11c0-1.5-.7-2.5-1.9-2.5S10 10.5 10 12v5h-3V7h3v1.5c.6-.8 1.8-1.7 4-1.7 2.9 0 5 1.9 5 5.5V17z" />
                   </svg>
                   Lihat Profil LinkedIn
                 </a>
                 {/* Tombol Baru untuk Instagram */}
-                <a href="https://instagram.com/namaku.ahla" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-300">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <a
+                  href="https://instagram.com/namaku.ahla"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-300"
+                >
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path d="M11 0H9a9 9 0 0 0-9 9v2a9 9 0 0 0 9 9h2a9 9 0 0 0 9-9V9a9 9 0 0 0-9-9zm7.3 11c0 3.9-3.2 7.1-7.1 7.1h-2.4c-3.9 0-7.1-3.2-7.1-7.1V9c0-3.9 3.2-7.1 7.1-7.1h2.4c3.9 0 7.1 3.2 7.1 7.1v2z" />
                     <path d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                     <circle cx="15" cy="5" r="1.5" />
@@ -335,8 +410,13 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
-          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Produk yang Kami Tawarkan</h2>
+        <section
+          id="services"
+          className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20"
+        >
+          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">
+            Produk yang Kami Tawarkan
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-8">
             <ServiceFeature
               icon="💻"
@@ -357,13 +437,17 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Pricing Section (dengan tab) */}
-        <section id="pricing" className="py-20 bg-purple-100 rounded-3xl shadow-xl mt-20">
+        <section
+          id="pricing"
+          className="py-20 bg-purple-100 rounded-3xl shadow-xl mt-20"
+        >
           <div className="container mx-auto px-4">
             <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-4">
               Pilihan Paket Harga 💰✨
             </h2>
             <p className="text-xl text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-              Harga Jujur, Fitur Maksimal! Pilih paket yang sesuai dengan kebutuhan website-mu, dari website personal hingga bisnis.
+              Harga Jujur, Fitur Maksimal! Pilih paket yang sesuai dengan
+              kebutuhan website-mu, dari website personal hingga bisnis.
             </p>
 
             {/* Tab Controls */}
@@ -383,38 +467,39 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Tab Content for Pelajar */}
-            <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${activeTab === 'pelajar' ? 'block' : 'hidden'}`}>
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${activeTab === 'pelajar' ? 'block' : 'hidden'}`}
+            >
               <PricingCard
                 title="Paket Dasar"
                 price="Rp 5.000/bulan"
                 description="Ideal untuk website personal atau landing page sederhana."
-                features={[
-                  "Maksimal 1 Halaman",
-                  "Hosting & Custom Domain",
-                ]}
+                features={['Maksimal 1 Halaman', 'Hosting & Custom Domain']}
               />
               <PricingCard
                 title="Paket Personal"
                 price="Rp 10.000/bulan"
                 description="Tingkatkan website personal Anda dengan fitur revisi."
                 features={[
-                  "Maksimal 1 Halaman",
-                  "Hosting & Custom Domain",
-                  "Revisi 1x per bulan"
+                  'Maksimal 1 Halaman',
+                  'Hosting & Custom Domain',
+                  'Revisi 1x per bulan',
                 ]}
               />
             </div>
 
             {/* Tab Content for UMKM */}
-            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ${activeTab === 'umkm' ? 'block' : 'hidden'}`}>
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ${activeTab === 'umkm' ? 'block' : 'hidden'}`}
+            >
               <PricingCard
                 title="Paket Bisnis"
                 price="Rp 20.000/bulan"
                 description="Solusi lengkap untuk bisnis yang membutuhkan lebih banyak halaman."
                 features={[
-                  "Maksimal 3 Halaman",
-                  "Hosting & Custom Domain",
-                  "Revisi 1x per bulan"
+                  'Maksimal 3 Halaman',
+                  'Hosting & Custom Domain',
+                  'Revisi 1x per bulan',
                 ]}
               />
               <PricingCard
@@ -422,9 +507,9 @@ const HomePage: React.FC = () => {
                 price="Rp 25.000/bulan"
                 description="Untuk bisnis yang berkembang dengan kebutuhan website yang kompleks."
                 features={[
-                  "Maksimal 5 Halaman",
-                  "Hosting & Custom Domain",
-                  "Revisi 1x per bulan"
+                  'Maksimal 5 Halaman',
+                  'Hosting & Custom Domain',
+                  'Revisi 1x per bulan',
                 ]}
               />
               <PricingCard
@@ -432,10 +517,10 @@ const HomePage: React.FC = () => {
                 price="Rp 50.000/bulan"
                 description="Solusi terintegrasi untuk UMKM yang ingin menonjolkan produk dan layanan secara online."
                 features={[
-                  "Maksimal 10 Halaman",
-                  "Hosting & Custom Domain",
-                  "Integrasi E-commerce Dasar",
-                  "Laporan Analitik Bulanan"
+                  'Maksimal 10 Halaman',
+                  'Hosting & Custom Domain',
+                  'Integrasi E-commerce Dasar',
+                  'Laporan Analitik Bulanan',
                 ]}
               />
               <PricingCard
@@ -443,11 +528,11 @@ const HomePage: React.FC = () => {
                 price="Rp 100.000/bulan"
                 description="Layanan premium untuk bisnis yang membutuhkan fitur marketing dan dukungan penuh."
                 features={[
-                  "Halaman Tidak Terbatas",
-                  "Hosting & Custom Domain",
-                  "Integrasi Penuh E-commerce",
-                  "Dukungan Prioritas 24/7",
-                  "SEO & Marketing Tools"
+                  'Halaman Tidak Terbatas',
+                  'Hosting & Custom Domain',
+                  'Integrasi Penuh E-commerce',
+                  'Dukungan Prioritas 24/7',
+                  'SEO & Marketing Tools',
                 ]}
               />
             </div>
@@ -456,23 +541,36 @@ const HomePage: React.FC = () => {
 
         {/* About Us Section */}
         <section id="about-us" className="py-20 mt-20">
-          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Tentang Kami 🚀</h2>
+          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">
+            Tentang Kami 🚀
+          </h2>
           <div className="bg-white rounded-3xl shadow-xl p-10 max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
             <p className="mb-6">
-              Kami adalah <strong className="text-purple-700">Barizaloka Group</strong>, tim ahli yang siap membantu Anda mewujudkan ide digital. Sejak 2025, kami fokus membuat website dan aplikasi mobile yang inovatif.
+              Kami adalah{' '}
+              <strong className="text-purple-700">Barizaloka Group</strong>, tim
+              ahli yang siap membantu Anda mewujudkan ide digital. Sejak 2025,
+              kami fokus membuat website dan aplikasi mobile yang inovatif.
             </p>
             <p className="mb-6">
-              Tujuan kami sederhana: membuat bisnis Anda maju dengan teknologi canggih. Kami bekerja sama dengan Anda dari awal sampai akhir, transparan, dan memastikan hasilnya benar-benar memuaskan. 🤝
+              Tujuan kami sederhana: membuat bisnis Anda maju dengan teknologi
+              canggih. Kami bekerja sama dengan Anda dari awal sampai akhir,
+              transparan, dan memastikan hasilnya benar-benar memuaskan. 🤝
             </p>
             <p>
-              Bersama tim kami yang selalu up-to-date dengan teknologi, kami siap menjadi partner Anda dalam meraih kesuksesan digital.
+              Bersama tim kami yang selalu up-to-date dengan teknologi, kami
+              siap menjadi partner Anda dalam meraih kesuksesan digital.
             </p>
           </div>
         </section>
 
         {/* Tech Stack Section */}
-        <section id="tech-stack" className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
-          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">Teknologi yang Kami Gunakan ⚙️</h2>
+        <section
+          id="tech-stack"
+          className="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20"
+        >
+          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">
+            Teknologi yang Kami Gunakan ⚙️
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-8">
             <TechCard
               icon="HTML5"
@@ -501,6 +599,56 @@ const HomePage: React.FC = () => {
             />
           </div>
         </section>
+
+        {/* Blog Section - NEW */}
+        <section
+          id="blog"
+          className="py-20 bg-purple-50 rounded-3xl shadow-xl mt-20"
+        >
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-12">
+            <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
+              <h2 className="text-5xl font-extrabold text-purple-800 mb-6">
+                Baca Artikel Terbaru Kami! 📚
+              </h2>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-md mx-auto lg:mx-0">
+                Temukan wawasan terbaru tentang pengembangan web, tips & trik,
+                dan berita teknologi dari tim ahli Barizaloka Group. Tingkatkan
+                pengetahuan digital Anda bersama kami!
+              </p>
+              <Link href="/blog">
+                <button className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-300 transform hover:scale-105">
+                  Menuju Halaman Blog
+                  <svg
+                    className="ml-3 -mr-1 h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </div>
+            <div className="lg:w-1/2 flex justify-center items-center relative">
+              <div className="absolute inset-0 bg-pink-300 opacity-30 rounded-full blur-3xl animate-pulse-slow"></div>
+              <Image
+                src="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Blog+Article" // Placeholder image for laptop article
+                alt="Laptop showing blog article"
+                width={600}
+                height={400}
+                className="relative z-10 w-full max-w-md lg:max-w-lg rounded-xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out"
+              />
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* QuotePopup - Hanya tampil di desktop */}
@@ -509,6 +657,6 @@ const HomePage: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

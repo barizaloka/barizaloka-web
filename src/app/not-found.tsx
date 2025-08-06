@@ -13,9 +13,13 @@ const NotFoundPage: React.FC = () => {
             Halaman Tidak Ditemukan
           </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Mohon maaf, halaman yang Anda cari tidak dapat kami temukan. Mungkin tautannya rusak, atau halaman sudah dipindahkan.
+            Mohon maaf, halaman yang Anda cari tidak dapat kami temukan. Mungkin
+            tautannya rusak, atau halaman sudah dipindahkan.
           </p>
-          <Link href="/" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110">
+          <Link
+            href="/"
+            className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110"
+          >
             Kembali ke Halaman Utama
           </Link>
         </div>

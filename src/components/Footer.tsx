@@ -12,35 +12,45 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 animate-fade-in">
         <p className="mb-2 text-lg font-semibold flex items-center justify-center">
           ✨
-          <Link href="/" className="hover:underline transition duration-300 ease-in-out transform hover:scale-105">
+          <Link
+            href="/"
+            className="hover:underline transition duration-300 ease-in-out transform hover:scale-105"
+          >
             Barizaloka Group
           </Link>
           ✨
         </p>
         <p className="mb-2 flex items-center justify-center">
-          📧 Email: <a href="mailto:barizaloka@gmail.com" className="hover:underline ml-2 transition duration-300 ease-in-out transform hover:scale-105">barizaloka@gmail.com</a>
+          📧 Email:{' '}
+          <a
+            href="mailto:barizaloka@gmail.com"
+            className="hover:underline ml-2 transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            barizaloka@gmail.com
+          </a>
         </p>
         <p className="mb-2 flex items-center justify-center">
-          📍 Alamat: RT 01 RW 02, sebuah sudut di Desa Karangasem, Kecamatan Sedan, Rembang, Jawa Tengah.
+          📍 Alamat: RT 01 RW 02, sebuah sudut di Desa Karangasem, Kecamatan
+          Sedan, Rembang, Jawa Tengah.
         </p>
         <p className="mb-2 flex items-center justify-center">
-          📱 WhatsApp: 
-          <a 
-            href={whatsappUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          📱 WhatsApp:
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline ml-2 transition duration-300 ease-in-out transform hover:scale-110"
           >
-            {phoneNumber} 
+            {phoneNumber}
           </a>
         </p>
 
         {/* Bagian Media Sosial Baru */}
         <div className="flex justify-center items-center mt-4 space-x-4">
-          <a 
-            href="https://youtube.com/@barizaloka" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://youtube.com/@barizaloka"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white hover:text-red-500 transition duration-300 ease-in-out transform hover:scale-125"
             aria-label="YouTube"
           >
@@ -49,7 +59,8 @@ const Footer: React.FC = () => {
         </div>
 
         <p className="mt-4 text-sm opacity-80">
-          © {new Date().getFullYear()} Barizaloka Group. All rights reserved. 🚀
+          © {new Date().getFullYear()} Barizaloka Group. All rights reserved.
+          🚀
         </p>
       </div>
     </footer>

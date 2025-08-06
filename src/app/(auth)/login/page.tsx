@@ -18,10 +18,15 @@ const LoginPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
       <main className="flex-grow flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 transform transition-transform duration-300 hover:scale-105">
-          <h1 className="text-4xl font-extrabold text-center text-purple-800 mb-8">Login</h1>
+          <h1 className="text-4xl font-extrabold text-center text-purple-800 mb-8">
+            Login
+          </h1>
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label className="block text-gray-700 font-medium mb-1" htmlFor="username">
+              <label
+                className="block text-gray-700 font-medium mb-1"
+                htmlFor="username"
+              >
                 Username
               </label>
               <input
@@ -34,7 +39,10 @@ const LoginPage: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-medium mb-1" htmlFor="password">
+              <label
+                className="block text-gray-700 font-medium mb-1"
+                htmlFor="password"
+              >
                 Password
               </label>
               <input
@@ -55,7 +63,10 @@ const LoginPage: React.FC = () => {
           </form>
           <p className="text-center text-gray-600 mt-6">
             Belum punya akun?{' '}
-            <Link href="/register" className="text-purple-600 hover:text-purple-800 font-semibold">
+            <Link
+              href="/register"
+              className="text-purple-600 hover:text-purple-800 font-semibold"
+            >
               Daftar di sini
             </Link>
           </p>

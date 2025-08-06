@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface Quote {
   id: number;
   title: string;
-	summary: string;
+  summary: string;
   content: string;
   author?: string;
 }
@@ -39,14 +39,30 @@ const Modal: React.FC<ModalProps> = ({ quote, onClose }) => {
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors"
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
-        <h3 className="text-3xl font-bold text-purple-700 mb-4">{quote.title}</h3>
-        <p className="text-lg text-gray-700 leading-relaxed mb-4">{quote.content}</p>
+        <h3 className="text-3xl font-bold text-purple-700 mb-4">
+          {quote.title}
+        </h3>
+        <p className="text-lg text-gray-700 leading-relaxed mb-4">
+          {quote.content}
+        </p>
         {quote.author && (
-          <p className="text-right text-purple-500 font-semibold italic">- {quote.author}</p>
+          <p className="text-right text-purple-500 font-semibold italic">
+            - {quote.author}
+          </p>
         )}
       </motion.div>
     </motion.div>
@@ -66,10 +82,10 @@ const QuotePopup: React.FC = () => {
       setError(null);
       try {
         setQuote({
-            title: "Motivasi Hidup",
-						summary: "Kutipan yang menginspirasi untuk hidup lebih baik.",
-            content: "Belajar adalah kunci untuk membuka pintu kesuksesan.",
-            id: 2
+          title: 'Motivasi Hidup',
+          summary: 'Kutipan yang menginspirasi untuk hidup lebih baik.',
+          content: 'Belajar adalah kunci untuk membuka pintu kesuksesan.',
+          id: 2,
         });
       } catch (err) {
         setError('Gagal memuat kutipan.');
@@ -103,15 +119,19 @@ const QuotePopup: React.FC = () => {
             initial={{ opacity: 0, x: -100, y: 100 }} // Ubah x menjadi -100 untuk animasi dari kiri
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, x: -100, y: 100 }} // Ubah x menjadi -100 untuk animasi keluar ke kiri
-            transition={{ duration: 0.5, type: "spring", damping: 10 }}
+            transition={{ duration: 0.5, type: 'spring', damping: 10 }}
             className="fixed bottom-4 left-4 z-50 p-4 bg-white rounded-xl shadow-2xl cursor-pointer hover:shadow-purple-500/50 transition-shadow"
             onClick={() => setIsModalOpen(true)}
           >
             <div className="flex items-start">
               <div className="text-3xl mr-3 text-purple-600">💡</div>
               <div className="flex-1">
-                <p className="text-sm font-semibold text-purple-700">Kutipan Menggugah Jiwa</p>
-                <p className="text-xs text-gray-600 line-clamp-2">{quote.summary}</p>
+                <p className="text-sm font-semibold text-purple-700">
+                  Kutipan Menggugah Jiwa
+                </p>
+                <p className="text-xs text-gray-600 line-clamp-2">
+                  {quote.summary}
+                </p>
               </div>
             </div>
           </motion.div>
