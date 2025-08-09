@@ -1,6 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Navbar from '@/barizaloka-web/components/Navbar';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Tentang Kami - Barizaloka',
+  description: 'Pelajari lebih lanjut tentang Barizaloka, visi, misi, dan cerita di balik pendirian kami.'
+}
 
 const AboutPage: React.FC = () => {
   return (
