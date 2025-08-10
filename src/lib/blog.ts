@@ -1,83 +1,51 @@
 // src/lib/blog.ts
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
 
-// Definisi interface untuk data blog post
-export interface BlogPost {
-  slug: string; // Nama file tanpa ekstensi (digunakan untuk URL)
-  title: string;
-  date: string; // Format YYYY-MM-DD
-  description: string;
-  imageUrl: string;
-  tags: string[];
-  contentHtml?: string; // Konten HTML dari Markdown (opsional untuk daftar, wajib untuk detail)
-}
+import { BlogPost } from '@/barizaloka-web/components/BlogListClient';
 
-// Path ke direktori blog posts
-const postsDirectory = path.join(process.cwd(), 'blogs');
-console.log('Posts directory:', postsDirectory);
+const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL;
 
-// Fungsi untuk mendapatkan semua slug (nama file) dari blog posts
-export function getPostSlugs(): string[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
-}
-
-// Fungsi untuk mendapatkan data blog post berdasarkan slug
-export async function getPostData(slug: string): Promise<BlogPost> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-  // Gunakan gray-matter untuk mem-parse frontmatter dan konten
-  const matterResult = matter(fileContents);
-
-  // Gunakan remark untuk mengonversi markdown menjadi string HTML
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
-  // Pastikan tipe data sesuai dengan BlogPost
-  const frontmatter = matterResult.data as Omit<BlogPost, 'slug' | 'contentHtml'>;
-
-  return {
-    slug,
-    contentHtml,
-    ...frontmatter,
-  };
-}
-
-// Fungsi untuk mendapatkan semua blog post (hanya metadata) untuk daftar
-export async function getAllPostsMetadata(): Promise<BlogPost[]> {
-  const slugs = getPostSlugs();
-  const allPostsData: BlogPost[] = [];
-
-  for (const slug of slugs) {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
-
-    // Ambil hanya metadata (frontmatter)
-    const frontmatter = matterResult.data as Omit<BlogPost, 'slug' | 'contentHtml'>;
-    
-    // Untuk deskripsi, ambil dari frontmatter. Jika tidak ada, ambil beberapa baris pertama dari konten
-    // const description = frontmatter.description || matterResult.content.split('\n').slice(0, 2).join(' ').substring(0, 150) + '...';
-
-    allPostsData.push({
-      slug,
-      ...frontmatter, // Ini akan menimpa description jika ada di frontmatter
-    });
+/**
+ * Mengambil semua postingan blog dari WordPress REST API.
+ * Menggunakan parameter '_embed' untuk menyertakan data gambar dan tag.
+ */
+export async function getAllPostsWithMetadata(): Promise<BlogPost[]> {
+  if (!WORDPRESS_API_URL) {
+    throw new Error('Variabel lingkungan WORDPRESS_API_URL tidak didefinisikan');
   }
 
-  // Urutkan posts berdasarkan tanggal (terbaru di atas)
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
+  const res = await fetch(`${WORDPRESS_API_URL}/posts?_embed`, {
+    next: { revalidate: 3600 },
   });
+
+  if (!res.ok) {
+    throw new Error(`Gagal mengambil data dari API: ${res.statusText}`);
+  }
+
+  const posts = await res.json();
+  return posts;
+}
+
+/**
+ * Mengambil satu postingan blog berdasarkan slug-nya.
+ * Menggunakan parameter '_embed' untuk menyertakan data gambar dan tag.
+ */
+export async function getPostBySlug(slug: string): Promise<BlogPost> {
+  if (!WORDPRESS_API_URL) {
+    throw new Error('Variabel lingkungan WORDPRESS_API_URL tidak didefinisikan');
+  }
+
+  const res = await fetch(`${WORDPRESS_API_URL}/posts?slug=${slug}&_embed`, {
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Gagal mengambil postingan dengan slug: ${slug}`);
+  }
+
+  const posts = await res.json();
+  if (posts.length === 0) {
+    throw new Error('Postingan tidak ditemukan');
+  }
+
+  return posts[0];
 }

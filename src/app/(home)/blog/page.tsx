@@ -1,10 +1,16 @@
-// src/app/blog/page.tsx
-// Ini adalah Server Component
+// src/app/(home)/blog/page.tsx
 
 import React from 'react';
-import { getAllPostsMetadata, BlogPost } from '@/barizaloka-web/lib/blog';
-import BlogListClient from '@/barizaloka-web/components/BlogListClient';
 import Link from 'next/link';
+import BlogListClient from '@/barizaloka-web/components/BlogListClient';
+import { getAllPostsWithMetadata } from '@/barizaloka-web/lib/blog';
+
+// Import the type from BlogListClient if it exports it
+// import type { BlogListClientProps } from '@/barizaloka-web/components/BlogListClient';
+
+// Alternative: Use React.ComponentProps to extract the props type
+type BlogListClientProps = React.ComponentProps<typeof BlogListClient>;
+type BlogPost = BlogListClientProps['initialPosts'][number];
 
 // Navbar sederhana (bisa dipindahkan ke komponen terpisah jika diperlukan)
 const Navbar: React.FC = () => (
@@ -27,24 +33,24 @@ const BlogPage: React.FC = async () => {
 
   try {
     // Panggil fungsi server-side untuk mendapatkan data blog
-    allBlogPosts = await getAllPostsMetadata();
+    allBlogPosts = await getAllPostsWithMetadata();
   } catch (error) {
-    console.error('Failed to fetch blog posts on server:', error);
+    console.error('Gagal mengambil artikel blog di server:', error);
     loadingError = true;
-    // Fallback ke data dummy jika terjadi error saat build/runtime di server
-    allBlogPosts = [];
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
       <Navbar />
-      {loadingError ? (
-        <p className="text-center text-red-600 text-xl py-10">
-          Gagal memuat artikel blog. Silakan coba lagi nanti.
-        </p>
-      ) : (
-        <BlogListClient initialPosts={allBlogPosts} />
-      )}
+      <div className="flex-grow container mx-auto px-4 py-28">
+        {loadingError ? (
+          <p className="text-center text-red-600 text-xl py-10">
+            Gagal memuat artikel blog. Silakan coba lagi nanti.
+          </p>
+        ) : (
+          <BlogListClient initialPosts={allBlogPosts} />
+        )}
+      </div>
     </div>
   );
 };
