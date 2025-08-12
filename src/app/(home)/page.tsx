@@ -331,7 +331,7 @@ const HomePage: React.FC = () => {
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="md:w-1/3 flex justify-center">
               <Image
-                src="/landing_page/founder-photo.jpg" // Pastikan path ini benar
+                src="/landing_page/handsome.webp" // Pastikan path ini benar
                 alt="Foto Pendiri Barizaloka Group"
                 width={300}
                 height={300}
