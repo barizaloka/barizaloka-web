@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import BlogListClient from '@/barizaloka-web/components/BlogListClient';
 import { getAllPostsWithMetadata } from '@/barizaloka-web/lib/blog';
+import Navbar from '@/barizaloka-web/components/Navbar';
 
 // Import the type from BlogListClient if it exports it
 // import type { BlogListClientProps } from '@/barizaloka-web/components/BlogListClient';
@@ -12,20 +13,6 @@ import { getAllPostsWithMetadata } from '@/barizaloka-web/lib/blog';
 type BlogListClientProps = React.ComponentProps<typeof BlogListClient>;
 type BlogPost = BlogListClientProps['initialPosts'][number];
 
-// Navbar sederhana (bisa dipindahkan ke komponen terpisah jika diperlukan)
-const Navbar: React.FC = () => (
-  <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
-    <div className="text-2xl font-bold text-purple-700">
-      Barizaloka Group Blog
-    </div>
-    <Link
-      href="/"
-      className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100"
-    >
-      &larr; Kembali ke Beranda
-    </Link>
-  </nav>
-);
 
 const BlogPage: React.FC = async () => {
   let allBlogPosts: BlogPost[] = [];
@@ -41,7 +28,7 @@ const BlogPage: React.FC = async () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
-      <Navbar />
+      <Navbar link='/blog' />
       <div className="flex-grow container mx-auto px-4 py-28">
         {loadingError ? (
           <p className="text-center text-red-600 text-xl py-10">

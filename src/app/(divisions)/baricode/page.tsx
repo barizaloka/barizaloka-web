@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import komponen Image dari next/image
+import Navbar from '@/barizaloka-web/components/Navbar';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -200,17 +201,7 @@ const LMSPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-200 to-pink-200 font-sans text-gray-800 flex flex-col justify-between">
-      {/* Navbar Sederhana */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-3xl mx-auto mt-4 max-w-6xl p-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-purple-700">
-          <Link
-            href="/course"
-            className="hover:text-purple-800 transition-colors duration-300"
-          >
-            Barizaloka LMS
-          </Link>
-        </div>
-      </nav>
+      <Navbar link='/baricode' title='Barizaloka LMS' />
 
       <main className="flex-grow container mx-auto px-4 py-28">
         {/* --- Jumbotron Motivasi (Diperbarui) --- */}
