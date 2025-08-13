@@ -1,7 +1,6 @@
 // src/app/(home)/blog/page.tsx
 
 import React from 'react';
-import Link from 'next/link';
 import BlogListClient from '@/barizaloka-web/components/BlogListClient';
 import { getAllPostsWithMetadata } from '@/barizaloka-web/lib/blog';
 import Navbar from '@/barizaloka-web/components/Navbar';
