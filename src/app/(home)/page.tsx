@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import QuotePopup from './components/QuotePopup'; // Pastikan path ini benar
+import TestimonialCard from './components/TestimonialCard';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -60,6 +61,16 @@ interface TechCardProps {
   title: string;
   description: string;
 }
+// Data dummy untuk testimonial
+const testimonials = [
+  {
+    quote:
+      'Layanan dari Barizaloka Group sangat memuaskan! Website yang dibuat sangat profesional dan sesuai dengan kebutuhan.',
+    author: 'Manik Yogantara',
+    role: 'Junior Frontend Developer',
+    portfolioUrl: 'https://github.com/ManikTzyyy'
+  }
+];
 
 // --- Komponen-komponen Reusable ---
 
@@ -597,6 +608,27 @@ const HomePage: React.FC = () => {
               title="Laravel"
               description="Framework PHP yang elegan dan solid untuk membangun aplikasi web yang kompleks dan skalabel, mulai dari API hingga e-commerce."
             />
+          </div>
+        </section>
+
+        {/* Testimonial Section - NEW */}
+        <section
+          id="testimonials"
+          className="py-20 bg-purple-50 rounded-3xl shadow-xl mt-20"
+        >
+          <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16">
+            Apa Kata Mereka?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={index}
+                quote={testimonial.quote}
+                author={testimonial.author}
+                role={testimonial.role}
+                portfolioUrl={testimonial.portfolioUrl}
+              />
+            ))}
           </div>
         </section>
 
