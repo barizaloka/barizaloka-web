@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Smartphone, Zap, Shield, Users, Calculator, Camera, Map, Music } from 'lucide-react';
+import { Smartphone, Zap, Calculator } from 'lucide-react';
+import Link from 'next/link';
 
 // --- Definisi Tipe Data (Interfaces) ---
 
@@ -12,7 +13,6 @@ interface MobileApp {
 	category: string;
 	icon: React.ReactNode;
 	features: string[];
-	downloadLink?: string;
 	comingSoon?: boolean;
 }
 
@@ -29,7 +29,7 @@ const MobileAppCard: React.FC<MobileAppCardProps> = ({ app }) => (
 				<div className="bg-white bg-opacity-20 p-3 rounded-xl">
 					{app.icon}
 				</div>
-				<span className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium">
+				<span className="bg-white dark:text-black bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium">
 					{app.category}
 				</span>
 			</div>
@@ -53,10 +53,12 @@ const MobileAppCard: React.FC<MobileAppCardProps> = ({ app }) => (
 				</div>
 			</div>
 
-			{app.downloadLink && !app.comingSoon && (
-				<button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-					Download Sekarang
-				</button>
+			{!app.comingSoon && (
+				<Link href={`/universe/apps/${app.id}`}>
+					<button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+						Download Sekarang
+					</button>
+				</Link>
 			)}
 
 			{app.comingSoon && (
@@ -113,82 +115,25 @@ const StudioStats: React.FC = () => (
 const MobileAppStudioPage: React.FC = () => {
 	const mobileApps: MobileApp[] = [
 		{
-			id: 'app-1',
-			title: 'QuickCalc Pro',
-			description: 'Kalkulator canggih dengan fitur scientific, konversi unit, dan riwayat perhitungan yang lengkap.',
+			id: 'timekeeper',
+			title: 'Barizaloka Timekeeper',
+			description: 'Stopwatch canggih yang dirancang dengan presisi untuk setiap detik berhargamu. Ringan, cepat, dan akurat.',
 			category: 'Produktivitas',
 			icon: <Calculator className="w-8 h-8" />,
-			features: ['Scientific Calculator', 'Unit Converter', 'History', 'Dark Mode'],
-			downloadLink: '#',
+			features: ['Stopwatch']
 		},
 		{
-			id: 'app-2',
-			title: 'SecureVault',
-			description: 'Password manager yang aman untuk menyimpan dan mengelola semua kata sandi Anda dengan enkripsi tingkat militer.',
-			category: 'Keamanan',
-			icon: <Shield className="w-8 h-8" />,
-			features: ['Password Generator', 'Biometric Lock', 'Cloud Sync', 'Auto Fill'],
-			downloadLink: '#',
-		},
-		{
-			id: 'app-3',
-			title: 'PhotoEdit Master',
-			description: 'Editor foto powerful dengan filter AI, background remover, dan tools editing profesional di mobile.',
-			category: 'Fotografi',
-			icon: <Camera className="w-8 h-8" />,
-			features: ['AI Filters', 'Background Removal', 'Batch Edit', 'Cloud Storage'],
-			downloadLink: '#',
-		},
-		{
-			id: 'app-4',
-			title: 'TeamSync',
-			description: 'Aplikasi kolaborasi tim yang memudahkan komunikasi, berbagi file, dan manajemen proyek.',
-			category: 'Kolaborasi',
-			icon: <Users className="w-8 h-8" />,
-			features: ['Real-time Chat', 'File Sharing', 'Task Management', 'Video Call'],
-			comingSoon: true,
-		},
-		{
-			id: 'app-5',
-			title: 'MapExplorer',
-			description: 'Aplikasi navigasi dan eksplorasi dengan fitur offline maps, tracking lokasi, dan rekomendasi tempat.',
-			category: 'Navigasi',
-			icon: <Map className="w-8 h-8" />,
-			features: ['Offline Maps', 'GPS Tracking', 'Place Reviews', 'Route Planning'],
-			downloadLink: '#',
-		},
-		{
-			id: 'app-6',
-			title: 'SoundStudio',
-			description: 'Audio editor dan recorder dengan fitur noise reduction, multi-track editing, dan export berkualitas tinggi.',
-			category: 'Audio',
-			icon: <Music className="w-8 h-8" />,
-			features: ['Multi-track Edit', 'Noise Reduction', 'Effects Library', 'High Quality Export'],
-			comingSoon: true,
-		},
+			id: 'barizone',
+			title: 'Barizone',
+			description: 'Aplikasi fokus yang membantu Anda menaklukkan tugas sambil bertualang bersama teman hewan yang menggemaskan. Selamatkan dan kumpulkan mereka semua!',
+			category: 'Produktivitas',
+			icon: <Zap className="w-8 h-8" />,
+			features: ['Sesi Fokus & Penyelamatan']
+		}
 	];
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 font-sans text-gray-800">
-			{/* Navigation */}
-			<nav className="bg-white bg-opacity-90 backdrop-blur-md shadow-lg sticky top-0 z-50">
-				<div className="container mx-auto px-4 py-4">
-					<div className="flex items-center justify-between">
-						<div className="flex items-center space-x-3">
-							<div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-								<Smartphone className="w-6 h-6 text-white" />
-							</div>
-							<span className="text-xl font-bold text-gray-800">Barizaloka Universe</span>
-						</div>
-						<div className="hidden md:flex space-x-6">
-							<a href="#apps" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Apps</a>
-							<a href="#about" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">About</a>
-							<a href="#contact" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Contact</a>
-						</div>
-					</div>
-				</div>
-			</nav>
-
 			<main className="container mx-auto px-4 py-16">
 				<StudioHeader />
 				<StudioStats />
