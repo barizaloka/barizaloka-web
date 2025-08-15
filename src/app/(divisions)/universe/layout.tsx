@@ -17,11 +17,14 @@ export default function HomeLayout({
 							<div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
 								<Smartphone className="w-6 h-6 text-white" />
 							</div>
-							<span className="text-xl font-bold text-gray-800">Barizaloka Universe</span>
+							<Link href='/universe'>
+								<span className="text-xl font-bold text-gray-800">Barizaloka Universe</span>
+							</Link>
+							<span >Barizaloka Universe</span>
 						</div>
-						<div className="hidden md:flex space-x-6">
+						{/* <div className="hidden md:flex space-x-6">
 							<Link href="/universe" className="text-gray-600 hover:text-purple-600 font-medium transition-colors">Aplikasi</Link>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</nav>

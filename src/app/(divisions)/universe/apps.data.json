@@ -1,0 +1,11 @@
+[
+  {
+    "id": "laporloka",
+    "title": "LaporLoka",
+    "description": "Platform interaksi masyarakat dan pihak yang diamanahkan",
+    "category": "Platform",
+    "features": ["Melapor ke pihak wewenang", "Pengerjaan transparan"],
+    "platforms": ["website"],
+    "comingSoon": true
+  }
+]
