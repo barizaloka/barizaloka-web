@@ -6,6 +6,6 @@
     "category": "Platform",
     "features": ["Melapor ke pihak wewenang", "Pengerjaan transparan"],
     "platforms": ["website"],
-    "comingSoon": true
+    "comingSoon": false
   }
 ]

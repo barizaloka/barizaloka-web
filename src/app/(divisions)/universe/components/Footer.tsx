@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white py-16 overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Elemen Latar Belakang Animasi */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Brand Section */}
+        {/* Bagian Brand */}
         <div className="text-center mb-12 space-y-6">
           <div className="inline-flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105">
             <div className="w-14 h-14 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg animate-pulse">
@@ -28,16 +28,16 @@ const Footer: React.FC = () => {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
                 Barizaloka Universe
               </h2>
-              <p className="text-sm text-gray-300">Mobile Innovation Hub</p>
+              <p className="text-sm text-gray-300">Platform Inovatif</p>
             </div>
           </div>
           
           <p className="text-gray-200 text-lg max-w-2xl mx-auto leading-relaxed">
-            🚀 Creating innovative mobile tools that transform everyday tasks into seamless, efficient experiences for users worldwide.
+            🚀 Barizaloka Universe adalah platform bermanfaat yang hadir di mobile, website, dan desktop untuk mendukung aktivitas sehari-hari menjadi lebih mudah, praktis, dan efisien.
           </p>
         </div>
 
-        {/* Contact Information Grid */}
+        {/* Grid Informasi Kontak */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
             <div className="flex items-center space-x-3 mb-3">
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Social Media Section */}
+        {/* Media Sosial */}
         <div className="text-center mb-12">
           <h3 className="text-xl font-semibold mb-6 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
             Ikuti Kami
@@ -124,46 +124,46 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Links Section */}
+        {/* Link Tambahan */}
         <div className="flex flex-wrap justify-center gap-8 mb-12">
           <a 
             href="#" 
             className="group flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 hover:scale-105"
           >
             <Shield className="w-4 h-4 group-hover:text-blue-400" />
-            <span>Privacy Policy</span>
+            <span>Kebijakan Privasi</span>
           </a>
           <a 
             href="#" 
             className="group flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 hover:scale-105"
           >
             <FileText className="w-4 h-4 group-hover:text-green-400" />
-            <span>Terms of Service</span>
+            <span>Syarat & Ketentuan</span>
           </a>
           <a 
             href="#" 
             className="group flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 hover:scale-105"
           >
             <HeadphonesIcon className="w-4 h-4 group-hover:text-purple-400" />
-            <span>Support</span>
+            <span>Dukungan</span>
           </a>
         </div>
 
-        {/* Divider */}
+        {/* Garis Pembatas */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8"></div>
 
-        {/* Copyright */}
+        {/* Hak Cipta */}
         <div className="text-center">
           <p className="text-gray-300 text-sm flex items-center justify-center space-x-2">
             <span>© {new Date().getFullYear()}</span>
             <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
             <span className="font-semibold">Barizaloka Universe</span>
             <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-            <span>All rights reserved</span>
+            <span>Hak cipta dilindungi</span>
             <span className="text-lg">🚀</span>
           </p>
           <p className="text-xs text-gray-400 mt-2">
-            Made with ❤️ in Indonesia
+            Dibuat dengan ❤️ di Indonesia
           </p>
         </div>
       </div>
