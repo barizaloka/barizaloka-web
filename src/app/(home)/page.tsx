@@ -341,13 +341,15 @@ const HomePage: React.FC = () => {
         >
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="md:w-1/3 flex justify-center">
-              <Image
-                src="/landing_page/handsome.webp" // Pastikan path ini benar
-                alt="Foto Pendiri Barizaloka Group"
-                width={300}
-                height={300}
-                className="rounded-full shadow-2xl border-4 border-purple-300 object-cover w-64 h-64 md:w-80 md:h-80 transform transition-transform duration-500 hover:scale-105"
-              />
+              <div className="relative">
+                <Image
+                  src="/landing_page/handsome.webp" // Pastikan path ini benar
+                  alt="Foto Pendiri Barizaloka Group"
+                  width={300}
+                  height={300}
+                  className="rounded-full shadow-2xl border-4 border-purple-300 object-cover w-64 h-64 md:w-80 md:h-80 transform transition-transform duration-500 hover:scale-105"
+                />
+              </div>
             </div>
             <div className="md:w-2/3 text-center md:text-left">
               <h2 className="text-4xl font-extrabold text-purple-800 mb-4">
@@ -360,61 +362,17 @@ const HomePage: React.FC = () => {
                 perjalanan digital ini untuk membantu mewujudkan berbagai ide
                 inovatif.
               </p>
-              <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-                {/* Tombol Kunjungi Website Portfolioku */}
-                <a
-                  href="https://github.com/ahlaiptek"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-300"
-                >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.974 6.974 0 0111.336 0l.138.627-.001.006a.5.5 0 01-.408.349H4.603a.5.5 0 01-.408-.349l-.001-.006.138-.627zM10 2.5a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zM2.5 10a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zm15 0a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zM5.184 14.816a.5.5 0 01.707 0l1.414 1.414a.5.5 0 01-.707.707L5.184 15.523a.5.5 0 010-.707zm9.632 0a.5.5 0 010 .707l-1.414 1.414a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zM14.816 5.184a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM5.184 5.184a.5.5 0 010 .707l1.414 1.414a.5.5 0 01.707-.707L5.891 5.184a.5.5 0 01-.707 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Kunjungi Website Portfolioku
-                </a>
-                {/* Tombol LinkedIn */}
-                <a
-                  href="https://linkedin.com/in/ahlaiptek"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
-                >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M16.3 0H3.7C1.6 0 0 1.6 0 3.7v12.6C0 18.4 1.6 20 3.7 20h12.6c2.1 0 3.7-1.6 3.7-3.7V3.7C20 1.6 18.4 0 16.3 0zM6 17H3V7h3v10zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM17 17h-3V11c0-1.5-.7-2.5-1.9-2.5S10 10.5 10 12v5h-3V7h3v1.5c.6-.8 1.8-1.7 4-1.7 2.9 0 5 1.9 5 5.5V17z" />
-                  </svg>
-                  Lihat Profil LinkedIn
-                </a>
-                {/* Tombol Baru untuk Instagram */}
-                <a
-                  href="https://instagram.com/namaku.ahla"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-300"
-                >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M11 0H9a9 9 0 0 0-9 9v2a9 9 0 0 0 9 9h2a9 9 0 0 0 9-9V9a9 9 0 0 0-9-9zm7.3 11c0 3.9-3.2 7.1-7.1 7.1h-2.4c-3.9 0-7.1-3.2-7.1-7.1V9c0-3.9 3.2-7.1 7.1-7.1h2.4c3.9 0 7.1 3.2 7.1 7.1v2z" />
-                    <path d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                    <circle cx="15" cy="5" r="1.5" />
-                  </svg>
-                  Ikuti Instagram
-                </a>
+              {/* Informasi Muhammadiyah */}
+              <div className="flex items-center justify-center md:justify-start gap-4 mb-6 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                <Image
+                  src="/Logo_Muhammadiyah.svg" // Pastikan path ini benar
+                  alt="Logo Muhammadiyah"
+                  width={64} // Sesuaikan ukuran yang Anda inginkan
+                  height={64} // Sesuaikan ukuran yang Anda inginkan
+                />
+                <p className="text-green-700 font-medium">
+                  <strong>Simpatisan Muhammadiyah</strong> - Menerapkan nilai-nilai Islam dalam setiap karya dan pelayanan
+                </p>
               </div>
             </div>
           </div>

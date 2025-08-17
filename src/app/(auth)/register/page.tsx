@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { registerUser } from '@/barizaloka-web/lib/auth/register';
 
 const RegisterPage: React.FC = () => {
   const router = useRouter();
@@ -48,23 +47,23 @@ const RegisterPage: React.FC = () => {
     }
 
     // Prepare data to send to the API.
-    const apiData = {
-      username: formData.username,
-      email: formData.email,
-      password: formData.password,
-    };
+    // const apiData = {
+    //   username: formData.username,
+    //   email: formData.email,
+    //   password: formData.password,
+    // };
 
     try {
-      await registerUser(apiData);
+      // TODO
 
       setSuccess('Pendaftaran berhasil! Silakan login.');
       setTimeout(() => {
         router.push('/login');
       }, 2000);
 
-    } catch (err: any) {
+    } catch (err) {
       console.error('Pendaftaran gagal:', err);
-      setError(err.message || 'Pendaftaran gagal. Silakan coba lagi.');
+      setError((err as Error).message || 'Pendaftaran gagal. Silakan coba lagi.');
     } finally {
       setIsLoading(false);
     }
