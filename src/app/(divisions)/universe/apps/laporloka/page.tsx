@@ -74,13 +74,13 @@ const PortalLaporanWargaDescription: React.FC = () => {
                         <motion.li variants={itemVariants} className="flex items-start gap-2">
                             <span>🧭</span>
                             <span>
-                                Navigasi Sederhana: Terdapat menu navigasi yang jelas dengan opsi "Beranda" dan "Tentang" untuk memudahkan pengguna dalam menjelajahi situs.
+                                Navigasi Sederhana: Terdapat menu navigasi yang jelas dengan opsi Beranda dan Tentang untuk memudahkan pengguna dalam menjelajahi situs.
                             </span>
                         </motion.li>
                         <motion.li variants={itemVariants} className="flex items-start gap-2">
                             <span>❤️</span>
                             <span>
-                                Motto Pelayanan: Portal ini memiliki motto "Melayani dengan sepenuh hati untuk kemajuan bersama", yang mencerminkan komitmennya terhadap pelayanan publik.
+                                Motto Pelayanan: Portal ini memiliki motto Melayani dengan sepenuh hati untuk kemajuan bersama, yang mencerminkan komitmennya terhadap pelayanan publik.
                             </span>
                         </motion.li>
                     </motion.ul>
