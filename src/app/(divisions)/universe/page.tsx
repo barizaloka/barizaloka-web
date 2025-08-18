@@ -66,12 +66,12 @@ const AppCard: React.FC<AppCardProps> = ({ app }) => (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out border border-gray-100">
         <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-6 text-white">
             <div className="flex items-center justify-between mb-4">
-                <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium text-white">
+                <span className="bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium">
                     {app.category}
                 </span>
                 <div className="flex flex-wrap gap-2"> 
                     {app.platforms.map((platform, index) => (
-                        <span key={index} className="bg-white bg-opacity-20 px-2 py-1 rounded-full text-sm font-medium text-white">
+                        <span key={index} className="bg-opacity-20 px-2 py-1 rounded-full text-sm font-medium text-white">
                             {platform.charAt(0).toUpperCase() + platform.slice(1)}
                         </span>
                     ))}
