@@ -18,6 +18,17 @@ const AboutPage: React.FC = () => {
           Tentang Kami
         </h1>
 
+        {/* --- Kode iframe yang diperbaiki --- */}
+        <div className="mx-auto max-w-4xl w-full aspect-video mb-12 rounded-2xl overflow-hidden shadow-2xl">
+          <iframe
+            loading="lazy"
+            style={{ width: '100%', height: '100%', border: 'none' }}
+            src="https://www.canva.com/design/DAGr-Act78c/r_BgNNvNMz--q4eBeGGxeA/view?embed"
+            allowFullScreen
+          ></iframe>
+        </div>
+        {/* --- Akhir dari perbaikan --- */}
+
         <div className="bg-white rounded-3xl shadow-xl p-10 max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
           <div className="flex flex-col lg:flex-row items-center gap-10 mb-12">
             <div className="lg:w-1/2">
