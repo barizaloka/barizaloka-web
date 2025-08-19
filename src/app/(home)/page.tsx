@@ -68,7 +68,7 @@ const testimonials = [
       'Layanan dari Barizaloka Group sangat memuaskan! Website yang dibuat sangat profesional dan sesuai dengan kebutuhan.',
     author: 'Manik Yogantara',
     role: 'Junior Frontend Developer',
-    portfolioUrl: 'https://github.com/ManikTzyyy'
+    portfolioUrl: 'https://maniktzyyy.github.io/web/'
   }
 ];
 
