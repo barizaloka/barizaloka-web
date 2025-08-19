@@ -481,29 +481,6 @@ const HomePage: React.FC = () => {
                   'Revisi 1x per bulan',
                 ]}
               />
-              <PricingCard
-                title="Paket Usaha"
-                price="Rp 50.000/bulan"
-                description="Solusi terintegrasi untuk UMKM yang ingin menonjolkan produk dan layanan secara online."
-                features={[
-                  'Maksimal 10 Halaman',
-                  'Hosting & Custom Domain',
-                  'Integrasi E-commerce Dasar',
-                  'Laporan Analitik Bulanan',
-                ]}
-              />
-              <PricingCard
-                title="Paket UMKM Pro"
-                price="Rp 100.000/bulan"
-                description="Layanan premium untuk bisnis yang membutuhkan fitur marketing dan dukungan penuh."
-                features={[
-                  'Halaman Tidak Terbatas',
-                  'Hosting & Custom Domain',
-                  'Integrasi Penuh E-commerce',
-                  'Dukungan Prioritas 24/7',
-                  'SEO & Marketing Tools',
-                ]}
-              />
             </div>
           </div>
         </section>
