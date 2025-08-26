@@ -1,7 +1,9 @@
 <?php
 
-it('returns a successful response', function () {
-    $response = $this->get('/');
+describe('Errors page', function () {
+    it('memastikan 404 diatur', function () {
+        $response = $this->get('/tidak-ada');
 
-    $response->assertStatus(200);
+        $response->assertSee('halaman yang Anda cari tidak ditemukan');
+    });
 });
