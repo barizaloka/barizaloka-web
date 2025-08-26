@@ -71,7 +71,7 @@
         </a>
     </div>
 
-
+    @include('layouts._components.footer')
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const toggleBtn = document.getElementById("menu-toggle");
