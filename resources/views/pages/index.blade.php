@@ -67,7 +67,6 @@
                 </div>
             </section>
         </div>
-        </section>
 
         {{-- Services Section --}}
         <section id="services" class="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
