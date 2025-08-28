@@ -21,15 +21,12 @@
 
         {{-- Desktop Navigation --}}
         <div class="hidden md:flex space-x-6">
-            <a href="#about-us"
+            <a href="/about"
                 class="inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">ℹ️
                 Tentang</a>
-            <a href="#founder"
+            <a href="/contact"
                 class="inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">👨‍💼
                 Pendiri</a>
-            <a href="#services"
-                class="inline-flex text-gray-700 hover:text-purple-700 font-medium transition duration-300 ease-in-out px-3 py-2 rounded-md hover:bg-purple-100">🛠️
-                Layanan</a>
         </div>
 
         {{-- Mobile Hamburger --}}
@@ -53,9 +50,8 @@
     <!-- Mobile Menu Drawer -->
     <div id="mobile-menu"
         class="fixed top-16 right-0 h-full w-64 bg-white/95 backdrop-blur-lg shadow-lg transform translate-x-full transition-transform duration-500 ease-in-out z-40 flex flex-col items-start p-6 space-y-6 text-lg font-semibold text-gray-700">
-        <a href="#about-us" class="hover:text-purple-600">ℹ️ Tentang</a>
-        <a href="#founder" class="hover:text-purple-600">👨‍💼 Pendiri</a>
-        <a href="#services" class="hover:text-purple-600">🛠️ Layanan</a>
+        <a href="/about" class="hover:text-purple-600">ℹ️ Tentang</a>
+        <a href="/contact" class="hover:text-purple-600">👨‍💼 Pendiri</a>
     </div>
 
     <main>
