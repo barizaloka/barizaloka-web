@@ -22,7 +22,12 @@ class RedisCheckListener
      */
     public function handle(DiagnosingHealth $event): void
     {
-        Redis::ping();
-        logger()->notice('Redis berhasil terhubung');
+        try {
+            Redis::ping();
+            logger()->notice('Redis berhasil terhubung');
+        } catch (\Exception $e) {
+            logger()->error($e->getTraceAsString());
+            throw $e;
+        }
     }
 }
