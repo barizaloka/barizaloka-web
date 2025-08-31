@@ -67,7 +67,7 @@ name('index');
                             <img src="{{ asset('images/landing_page/Logo_Muhammadiyah.svg') }}" alt="Logo Muhammadiyah"
                                 class="w-16 h-16" />
                             <p class="text-green-700 font-medium">
-                                <strong>Simpatisan Muhammadiyah</strong> - Menerapkan nilai-nilai Islam dalam setiap karya
+                                <strong>Simpatisan Muhammadiyah</strong> - Menerapkan nilai-nilai Islam berkemajuan dalam setiap karya
                                 dan pelayanan
                             </p>
                         </div>
