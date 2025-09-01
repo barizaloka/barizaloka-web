@@ -52,7 +52,7 @@
                 <p class="text-gray-300 text-sm mb-2">Email</p>
                 <a href="mailto:barizaloka@gmail.com"
                     class="text-yellow-300 hover:text-yellow-200 transition-colors duration-300 text-sm font-medium">
-                    barizaloka@gmail.com
+                    support@barizaloka.id
                 </a>
             </div>
 
