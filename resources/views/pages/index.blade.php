@@ -40,15 +40,6 @@ name('index');
                 </div>
             </section>
 
-            {{-- Testimoni Video --}}
-            <section id="video-testimonial" class="py-20 mt-20 bg-pink-50 rounded-3xl shadow-xl">
-                <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-10">Lihat Apa Kata Mereka 🎥</h2>
-                <div class="max-w-3xl mx-auto aspect-video rounded-xl overflow-hidden shadow-xl">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
-                        allowfullscreen></iframe>
-                </div>
-            </section>
-
 
             {{-- Founder Section --}}
             <section id="founder" class="py-20 mt-20 bg-white rounded-3xl shadow-xl">
