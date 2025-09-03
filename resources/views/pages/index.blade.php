@@ -168,39 +168,7 @@ name('index');
             </div>
         </section>
 
-        {{-- Lokasi Kantor --}}
-        <section id="location" class="py-20 bg-white mt-20 rounded-3xl shadow-xl">
-            <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-8">Kunjungi Kami 📍</h2>
-            <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg aspect-video">
-                <iframe class="w-full h-full"
-                    src="https://maps.google.com/maps?q=Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-        </section>
-
-        {{-- Blog Section --}}
-        <section id="blog" class="py-20 bg-pink-50 mt-20 rounded-3xl shadow-xl">
-            <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-12">Artikel Terbaru</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-purple-700 text-lg mb-2">Tips Membuat Website yang Menjual</h3>
-                    <p class="text-gray-600 text-sm mb-3">Pelajari prinsip dasar desain UX/UI yang efektif untuk
-                        meningkatkan konversi.</p>
-                    <a href="#" class="text-purple-600 font-semibold">Baca Selengkapnya →</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-purple-700 text-lg mb-2">Kenapa Bisnis Perlu Aplikasi Mobile?</h3>
-                    <p class="text-gray-600 text-sm mb-3">Cari tahu kelebihan aplikasi mobile untuk UMKM dan startup.</p>
-                    <a href="#" class="text-purple-600 font-semibold">Baca Selengkapnya →</a>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-purple-700 text-lg mb-2">Pentingnya SEO untuk Website Bisnis</h3>
-                    <p class="text-gray-600 text-sm mb-3">Tingkatkan visibilitas bisnismu dengan strategi SEO yang tepat.
-                    </p>
-                    <a href="#" class="text-purple-600 font-semibold">Baca Selengkapnya →</a>
-                </div>
-            </div>
-        </section>
+        
 
     </div>
 @endsection
