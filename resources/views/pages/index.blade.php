@@ -108,29 +108,6 @@ name('index');
             </div>
         </section>
 
-        {{-- Services Section --}}
-        <section id="services" class="py-20 bg-pink-50 rounded-3xl shadow-xl mt-20">
-            <h2 class="text-5xl font-extrabold text-center text-purple-800 mb-16">Produk yang Kami Tawarkan</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-5xl mb-4 text-purple-600">💻</div>
-                    <h3 class="text-xl font-bold text-purple-700 mb-2">Pengembangan Website</h3>
-                    <p class="text-gray-600">Membangun website yang unik dan responsif sesuai kebutuhan bisnis Anda.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-5xl mb-4 text-purple-600">📱</div>
-                    <h3 class="text-xl font-bold text-purple-700 mb-2">Aplikasi Mobile</h3>
-                    <p class="text-gray-600">Menciptakan aplikasi Android & iOS dengan performa tinggi dan UX yang
-                        intuitif.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-5xl mb-4 text-purple-600">🤖</div>
-                    <h3 class="text-xl font-bold text-purple-700 mb-2">Bot WhatsApp</h3>
-                    <p class="text-gray-600">Otomatisasi komunikasi bisnis Anda dengan bot WhatsApp yang cerdas.</p>
-                </div>
-            </div>
-        </section>
-
         {{-- Testimoni Klien --}}
         <section id="testimonials" class="py-20 mt-20 bg-white rounded-3xl shadow-xl">
             <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-16">Apa Kata Klien Kami?</h2>
