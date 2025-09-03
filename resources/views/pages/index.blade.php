@@ -107,23 +107,7 @@ name('index');
                 </div>
             </div>
         </section>
-
-        {{-- Testimoni Klien --}}
-        <section id="testimonials" class="py-20 mt-20 bg-white rounded-3xl shadow-xl">
-            <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-16">Apa Kata Klien Kami?</h2>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="bg-purple-100 p-6 rounded-xl shadow-md">
-                    <p class="text-gray-700 italic mb-4">"Pelayanan sangat profesional dan hasil website-nya luar biasa!"
-                    </p>
-                    <p class="text-purple-800 font-semibold">– Andi, Owner Toko Online</p>
-                </div>
-                <div class="bg-purple-100 p-6 rounded-xl shadow-md">
-                    <p class="text-gray-700 italic mb-4">"Aplikasi Android kami sekarang jauh lebih cepat dan stabil."</p>
-                    <p class="text-purple-800 font-semibold">– Siti, Startup Founder</p>
-                </div>
-            </div>
-        </section>
-
+        
         {{-- Statistik Capaian --}}
         <section id="stats"
             class="py-20 mt-20 bg-gradient-to-r from-purple-400 to-pink-600 rounded-3xl shadow-xl text-white">
