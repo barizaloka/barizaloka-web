@@ -29,18 +29,6 @@ name('index');
                 </div>
             </section>
 
-            {{-- Video Embed --}}
-            <section class="py-20 mt-20">
-                <h2 class="text-4xl font-extrabold text-center text-purple-800 mb-10">
-                    Kenali Barizaloka Lebih Dekat!
-                </h2>
-                <div class="relative aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
-                    <iframe src="https://www.youtube.com/embed/wpRl32uR_so" class="absolute top-0 left-0 w-full h-full"
-                        frameborder="0" allowfullscreen></iframe>
-                </div>
-            </section>
-
-
             {{-- Founder Section --}}
             <section id="founder" class="py-20 mt-20 bg-white rounded-3xl shadow-xl">
                 <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
