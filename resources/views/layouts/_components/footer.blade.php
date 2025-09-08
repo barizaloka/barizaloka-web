@@ -93,8 +93,7 @@
 
         {{-- Copyright --}}
         <p class="text-gray-400 text-sm flex items-center justify-center">
-            © {{ date('Y') }} <span class="mx-2 text-purple-300 font-semibold">Barizaloka Group</span> All rights
-            reserved. 🚀
+            © {{ date('Y') }} <span class="mx-2 text-purple-300 font-semibold">Barizaloka Group</span> Segala hak cipta dilindungi. 🚀
         </p>
     </div>
 </footer>
